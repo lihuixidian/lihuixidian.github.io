@@ -1,0 +1,1549 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+<meta content="text/html; charset=UTF-8" http-equiv="content-type">
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document"><title>Tools and Tips for Writing Papers</title></head>
+<body>
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-78895459-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+<p><b><font face="Times New Roman" size="6">Tools
+and Tips for Writing Papers</font></b></p>
+<ul>
+<li><b><a href="#edit"><font face="Times New Roman">Editing LaTeX Files</font></a></b></li>
+<li><b><a href="#texniccentermode"><font face="Times New Roman">TeXnicCenter: which modes to use</font></a></b></li>
+<li><b><a href="#wrongmargin"><font face="Times New Roman">Generated PDF has wrong size being
+letter instead of A4 (or the other way around when the prefered size is
+letter)</font></a></b></li>
+<li><b><a href="#missingfont"><font face="Times New Roman">Generated PDF misses embedded fonts</font></a></b></li>
+<li><b><a href="#recognizeeps"><font face="Times New Roman">TeXnicCenter cannot recognize EPS
+figures when LaTeX-&gt;PDF</font></a></b></li>
+<li><b><a href="#space"><font face="Times New Roman">Space saving in LaTeX</font></a></b></li>
+<li><b><a href="#eps"><font face="Times New Roman">Converting a MS Powerpoint/Word image
+to EPS embedded in LaTeX</font></a></b></li>
+<li><b><a href="#png"><font face="Times New Roman">Converting a PNG or another type of
+image to EPS embedded in LaTeX</font></a></b></li>
+<li><b><a href="#merge"><font face="Times New Roman">Merging multiple tex files and bib
+files into a single tex file for final submission</font></a>
+</b></li>
+<li><a onmousedown="return clk('http://research.microsoft.com/users/jckrumm/Word%20Tips/technical%20publishing.htm','res','1','')" href="#word"><b><font face="Times New Roman">Technical
+Publishing with Microsoft Word</font></b></a></li>
+<li><font face="Times New Roman"><b><a href="#bibtex">Managing</a></b><a href="#bibtex"><b> bibtex database</b></a></font></li>
+<li><b><a href="#xfig"><font face="Times New Roman">Drawing figures using xfig</font></a></b></li>
+<li><b><font face="Times New Roman"><a href="#dia">Drawing figures using Dia</a></font></b></li>
+<li><b><font face="Times New Roman"><a href="#figsidebyside">Drawing figures side by side</a><br>
+</font></b></li>
+<li><b><font face="Times New Roman"><a href="#visio">Making project schedule with MS Visio/</a></font></b><a href="#visio"><b><font face="Times New Roman">Converting
+Visio to EPS</font></b></a><b><font face="Times New Roman"><br>
+</font></b></li>
+<li><b><a href="#table"><font face="Times New Roman">Converting Excel tables into LaTeX
+tables</font></a></b></li>
+<li><b><a href="http://www.csc.ncsu.edu/faculty/junxu/latex_tips.html"><font face="Times New Roman">Counting number of words in a LaTeX
+document, a.k.a., wc for LaTeX (by Jun Xu)</font></a></b></li>
+<li><a href="#pagenoformat"><span style="font-weight: bold;"><font face="Times New Roman">Adding
+"A/B/C/D/.." before page numbers in LaTeX&nbsp;</font></span><span style="font-weight: bold;"><font face="Times New Roman">
+(format required in proposals at least to DoD agencies)</font></span></a></li>
+<li><b><a href="#tricks"><font face="Times New Roman">Tricks in writing LaTeX source</font></a></b></li>
+<li><b><font face="Times New Roman"><a href="#preprint">Preparing preprint versions for different
+conference styles</a>&nbsp;</font></b></li>
+<li><b><a href="#lyx"><font face="Times New Roman">Making Lyx exported LaTeX file to
+work with conference style file</font></a></b></li>
+<li><b><font face="Times New Roman"><a href="#nsf">NSF Proposal LaTeX Format</a><br>
+</font></b></li>
+<li><b><a href="#slides"><font face="Times New Roman">Presentation Slides</font></a></b></li>
+<li><b><a href="#reference"><font face="Times New Roman">Reference formats</font></a></b></li>
+<li><b><a href="#thoughts"><font face="Times New Roman">Organizing Thoughts and Keeping Track
+of Peer Research</font></a></b></li>
+<li><b><a href="#stylecheck"><font face="Times New Roman">Using Style-Check in our server</font></a></b></li>
+<li class=""><a href="#preparefinal"><span style="font-weight: bold;"><font face="Times New Roman">Things
+to do on finishing up a paper</font></span></a></li>
+<li><span style="font-weight: bold;"><font face="Times New Roman"><a href="#referenceformat">Reference
+format</a></font></span></li>
+<li><span style="font-weight: bold;"><font face="Times New Roman"><a style="font-family: Times New Roman,Times,serif;" href="http://kompozer.net/">Homepage editing tool</a><a style="font-family: Times New Roman,Times,serif;" href="http://kompozer.net/"> Kompozer</a></font></span></li>
+<li style="font-weight: bold; font-family: Times New Roman,Times,serif;"><a href="#nsfpub">Uploading publications in the NSF reporting
+system</a></li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+<li><font face="Times New Roman" size="3"><b><a name="edit">Editing LaTeX files</a> (see <a href="http://www.mit.edu/%7Esalcianu/ps_utils/">Alex
+Salcianu's tips</a>)</b></font>
+<ul>
+<li><font face="Times New Roman">Windows
+platform: You can download <a href="http://www.tug.org/protext/">a
+bundle of TeXnic and MiKTeX here</a>. <a href="http://www.latex-project.org/ftp.html">More on
+obtaining LaTeX</a></font></li>
+<li><font face="Times New Roman">Windows
+platform: <a href="http://www.texniccenter.org/">Using
+TeXnic Center</a> <font size="3">+ <a href="http://www.miktex.org" target="_top">MiKTeX</a></font>:
+an MS Visual Studio-like environment. </font><font face="Times New Roman"><font size="3">TeXnic
+Center doesn't have&nbsp;a feature for convering Tex to HTML file.
+But you can use the <a href="http://www.mayer.dial.pipex.com/tex.htm#TexConverter">TeX
+Converter</a>. Then you can copy text from the generated HTML
+file to MS Word to do spell check or grammar checking.</font></font></li>
+<li><font face="Times New Roman">Windows
+platform: <font size="3"><a href="http://www.winedt.com/">WinEdt</a> + <a href="http://www.miktex.org" target="_top">MiKTeX</a>:
+Another environment for creating LaTeX documents, but not freely
+available. (Here a <a href="http://www.ctex.org/HomePage">download
+site</a> in Chinese). WinEdt has a feature for convering Tex to
+HTML file. You can copy text from the generated HTML file to MS Word to
+do spell check or grammar checking.</font></font></li>
+<li><font face="Times New Roman"><font size="3">Windows platform: <a href="http://www.vim.org/download.php#pc">gvim</a> + <a href="http://www.miktex.org" target="_top">MiKTeX</a>:
+Another environment for creating LaTeX documents. Here are <a href="http://it.metr.ou.edu/latex/win/">some tips on
+installing gvim</a>.</font></font></li>
+<li><font face="Times New Roman" size="3">Note:
+The latest version of <a href="http://www.miktex.org" target="_top">MiKTeX</a> cannot work with the IEEE or
+ACM style files. Here is <a href="http://sourceforge.net/mailarchive/forum.php?thread_id=7491985&amp;forum_id=10537">a
+solution</a>. You can download the <a href="latex8.sty">modified
+IEEE file</a> and <a href="sig-alternate.cls">ACM
+file</a> based on the solution (contributed by Evan Martin).</font></li>
+<li><font face="Times New Roman">Note: if you
+have problems in using MiKTeX in Windows, you can search Internet for
+addressing the problems or install <a href="http://www.cygwin.com/">cygwin</a>
+and use the LaTeX command under it. Here is <a href="http://it.metr.ou.edu/latex/">one tutorial on using
+Linux/Unix LaTeX commands.</a></font></li>
+<li><font face="Times New Roman">MaC platform:
+<a href="http://www.uoregon.edu/%7Ekoch/texshop/texshop.html">TexShop</a>&nbsp;
+(<a href="http://web.reed.edu/cis/help/latexInstall.html">installation
+details</a>)</font></li>
+<li><font face="Times New Roman">Linux
+platform: <a href="http://kile.sourceforge.net/">Kile</a></font></li>
+<li><font face="Times New Roman">Note:
+Linux/Unix has already provided LaTeX packages. Here is <a href="http://it.metr.ou.edu/latex/">one tutorial on using
+Linux/Unix LaTeX commands.</a></font></li>
+<li><font face="Times New Roman">MikTex 2.9
+may have problems with its Yap (freezing), to fix it:<br>
+</font></li>
+<ul>
+<li><font face="Times New Roman">In Yap,
+select View-&gt;Options: Display tab: Change default render method
+from Pk to Dvips <br>
+</font></li>
+</ul>
+</ul>
+</li>
+</ul>
+<ul>
+<li><b><font face="Times New Roman"><a name="texniccentermode"></a>TeXnicCenter
+specific:&nbsp;Modes to use</font></b></li>
+<ul>
+<li><font face="Times New Roman">You can read <a href="http://www2.hawaii.edu/%7Eqzhang/Latex.html">an
+article written by Qin Zhang</a> and &nbsp;<a href="http://www.ces.clemson.edu/linux/latex.shtml">an
+article written by Bill Moss</a>. In case they become broken
+links, you can find the cached versions at our server
+/home/public/docs/writingdocs.&nbsp;</font> </li>
+<li><font face="Times New Roman">Normally when
+you are editing, use the mode "LaTeX=&gt;DVI", which is faster to
+use.</font></li>
+<li><font face="Times New Roman">When you try to
+generate PDF for submission in the end, use the mode
+"LaTeX=&gt;PS=&gt;PDF". I usually don't recommend you to use
+the mode "LaTeX=&gt;PDF" (which may not recognize EPS figures)
+unless "LaTeX=&gt;PS=&gt;PDF" doesn't work.</font></li>
+<li><font face="Times New Roman">In any mode,
+always watch the console output in the lower part of the application
+window. If you see some red errors (even if you can successfully
+produce and view DVI or PDF), you need to address these issues. You
+want to see in the end of the console information: "LaTeX-Result: 0
+Error(s) ...". You shouldn't allow non-zero errors.</font></li>
+<li>If you don't see you have a list of profiles (including
+LaTeX=&gt;DVI, LaTeX=&gt;PDF, LaTeX=&gt; PS, LaTeX=&gt;
+PS =&gt; PDF) by clicking Build-&gt; Define Output Profiles,
+you need to do the following thing:<br>
+1. Download the following configuration that I exported from my
+TeXnicCenter: <a href="../publications/texniccenter.tco">publications/texniccenter.tco</a><br>
+2. Import it from a button "Import" in the above dialog.<br>
+Then you can see a list of profiles.<br>
+Note that in the profile for LaTeX=&gt;PS=&gt;PDF, I configured
+correctly on producing a PDF that can pass IEEE PDF checking, which
+normally would report missing fonts in your generated PDF file if you
+don't follow my configuration.<br>
+In editing mode, you should use the "LaTeX=&gt;DVI" profile (using
+the pull-down menu on the shortcup menu list), and click Cltrl+F5 (or
+the shortcut button "Build and View Output" to see the view the
+generated DVI.<br>
+When you want to build a PDF to submit, choose the
+"LaTeX=&gt;PS=&gt;PDF" mode.<br>
+</li>
+<li><font face="Times New Roman">Use spell check
+features of&nbsp; TeXnicCenter: </font> In TeXnicCenter,
+Tools-&gt;Options-&gt;Spelling tab-&gt; enable all checkbox
+options in that tab including "Check spelling while typing". <font face="Times New Roman">You can see that those words that
+cannot pass spell checks are underlined with red lines. To enable those
+special words such as "pointcut", right click the words and click "Add"
+to add the words to the dictionary. Then later on the same words won't
+be underlined. Normally you should make these red underlines disappear
+unless in some code snippet where you will have a lot of red unerlines
+(don't bother to add those words there to dictionary).</font></li>
+</ul>
+</ul>
+<ul>
+<li><font face="Times New Roman"><b><a name="wrongmargin"></a>If I create a PDF file using
+PS2PDF or PDFLaTeX the paper size is changed to Letter instead of A4
+(the generated PDF has a narrow top margin) </b></font><font><b><font face="Times New Roman">(or the other way around when the
+prefered size is letter)</font></b></font><br>
+<font face="Times New Roman"><b> TeXnicCenter
+specific </b><span style="font-weight: bold;">(1beta
+6.31)</span><b>:</b></font></li>
+<ul>
+<li><font face="Times New Roman">You can
+configure the PS2PDF&nbsp;command line options at menu
+"Build-&gt;Define Output Profiles..." Click
+LaTeX=&gt;PS=&gt;PDF on the left-size list box, then click
+Postprocessor tag, click the "Ghostscript (ps2pdf)" entry in the list
+box on the right. The "Arguments" box on the bottom should be put with
+the following command line options: <br>
+-sPAPERSIZE=a4 -dSAFER -dBATCH -dNOPAUSE -sDEVICE=pdfwrite
+-dPDFSETTINGS=/printer -dMaxSubsetPct=100 -dSubsetFonts=true
+-dEmbedAllFonts=true -sOutputFile="%bm.pdf" -c save pop -f "%bm.ps"<br>
+where "-sPAPERSIZE=a4" specifies that A4 size is generated.</font></li>
+<li><font face="Times New Roman">If your
+preferred size is letter instead of A4, you need to replace the "</font><font face="Times New Roman"> -sPAPERSIZE=a4" above with "</font><font face="Times New Roman">-sPAPERSIZE=letter".
+In addition, add "-t letter" to the command line argument for dvips.
+Note that you don't need to put <br>
+\pdfpagewidth=8.5in<br>
+\pdfpageheight=11in<br>
+</font>to the document preamble as some guideline suggests.</li>
+</ul>
+</ul>
+<font face="Times New Roman"> &nbsp;&nbsp;
+&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;<b>WinEdt
+specific: (from <a href="http://www.win.tue.nl/latex/faq.html">LaTeX
+FAQs</a>)</b><br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; If you use WinEdt's default settings and
+run PDFLaTeX or PS2PDF on a A4 sized LaTeX document, the resulting PDF
+file might have page size Letter (8.5 x 11 inch). To fix this do the
+following: <br>
+</font>
+<ul>
+<ul>
+<li><font face="Times New Roman">PS2PDF users:
+when you create a PostScript file using DVIPS, a dialog is displayed in
+WinEdt. In this dialog you should change the "Generic Parameters" to <tt>-P
+pdf -t A4 -z</tt> (instead of the default <tt>-P pdf</tt>).
+WinEdt will remember this setting.</font></li>
+<li><font face="Times New Roman">PDFLaTeX users:
+add the <tt>a4paper</tt> option to the <tt>\documentclass</tt>
+command, usually the first line in your LaTeX document.
+Example:\documentclass[11pt,twoside,a4paper]{article}</font></li>
+<li><font face="Times New Roman">In WinEdt,
+click on "Wrap" at the bottom of the screen to turn off automatic line
+wrapping whenever you are dealing with program listings! That is, if
+you are about to paste in a listing from the clipboard, turn off wrap
+first. If your cursor is anywhere in the listing, turn<br>
+off wrap. For normal text, you typically have wrap turned on, but not
+for listings.<br>
+</font></li>
+</ul>
+</ul>
+<ul>
+<li><font face="Times New Roman"><b><a name="missingfont"></a>How to configure WinEdt or
+TeXnicCenter to pass IEEE PDF eXpress when error reports said "Font XXX
+is not embedded"? (from <a href="http://www.vis.uky.edu/%7Eryang/Miscellaneous/ThesisFAQ/UNCthesisFAQ.htm#embed">UNC
+thesis FAQs</a>) i.e., How to embed ALL fonts (including the
+times family) in a PDF file?</b><br>
+<span style="font-weight: bold;">TeXnicCenter Specific
+(1beta 6.31): </span><b>(if you have configured PS2PDF's
+command line like the above when addressing the issue of A4 Size, you
+shouldn't have problems in the missing font issue)</b></font></li>
+<ul>
+<li><font face="Times New Roman"><b>How to
+check whether Type 1 Fonts are embedded? There are two options to check:<br>
+</b></font></li>
+<ul>
+<li><font face="Times New Roman">(1) In
+Acrobat Reader, use 'File' - 'Document Properties' and click on the
+'Font' tab. <br>
+</font></li>
+<li><font face="Times New Roman">(2) From a
+UNIX command-line, just use the pdffonts program (usually included with
+xpdf), viz: "% pdffonts my-paper.pdf"<b><br>
+</b></font></li>
+</ul>
+</ul>
+<ul>
+<li>
+<p style="margin: 0px 0px 0.75em; line-height: 1.5em; color: rgb(0, 0, 0); font-family: 'Lucida Grande',Verdana,Lucida,Helvetica,Arial,sans-serif; font-size: 12px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; background-color: rgb(255, 255, 255);">More
+options can be found <a href="http://www.acm.org/sigs/publications/sigfaq#a14">here</a>.
+A solution is to include this dvips option<span class="Apple-converted-space">&nbsp;</span><tt style="padding: 0px 0.1em; font-family: Monaco,'Courier New',Courier,monospace; font-size: 15px; color: black; background-color: rgb(222, 231, 236);">-Pdownload35</tt>,
+viz.</p>
+<pre style="border: 1px solid rgb(140, 172, 187); padding: 1em; font-family: Monaco,'Courier New',Courier,monospace; font-size: 12px; color: rgb(0, 0, 0); background-color: rgb(222, 231, 236); overflow: auto; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; text-align: start; text-indent: 0px; text-transform: none; word-spacing: 0px;">dvips -t letter -Pdownload35 -o &lt;file&gt;.ps &lt;file&gt;.dvi</pre>
+<span style="color: rgb(0, 0, 0); font-family: 'Lucida Grande',Verdana,Lucida,Helvetica,Arial,sans-serif; font-size: 12px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; background-color: rgb(255, 255, 255); display: inline ! important; float: none;">This
+option 'forces' the embedding of all the fonts. (</span><b style="color: rgb(0, 0, 0); font-family: 'Lucida Grande',Verdana,Lucida,Helvetica,Arial,sans-serif; font-size: 12px; font-style: normal; font-variant: normal; letter-spacing: normal; line-height: normal; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; background-color: rgb(255, 255, 255);">Note:</b><span style="color: rgb(0, 0, 0); font-family: 'Lucida Grande',Verdana,Lucida,Helvetica,Arial,sans-serif; font-size: 12px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; background-color: rgb(255, 255, 255); display: inline ! important; float: none;"><span class="Apple-converted-space">&nbsp;</span>This
+option is not available in all dvips versions.)</span></li>
+<li><font face="Times New Roman">You can
+configure the PS2PDF&nbsp;command line options at menu
+"Build-&gt;Define Output Profiles..." Click
+LaTeX=&gt;PS=&gt;PDF on the left-size list box, then click
+Postprocessor tag, click the "Ghostscript (ps2pdf)" entry in the list
+box on the right. The "Arguments" box on the bottom should be put with
+the following command line options: <br>
+-sPAPERSIZE=a4 -dSAFER -dBATCH -dNOPAUSE -sDEVICE=pdfwrite
+-dPDFSETTINGS=/printer -dMaxSubsetPct=100 -dSubsetFonts=true
+-dEmbedAllFonts=true -sOutputFile="%bm.pdf" -c save pop -f "%bm.ps"<br>
+where "-dPDFSETTINGS=/printer -dMaxSubsetPct=100 -dSubsetFonts=true
+-dEmbedAllFonts=true" specifies that all embedded fonts are included in
+PDF.</font></li>
+<li><font face="Times New Roman">If your
+preferred size is letter instead of A4, you need to replace the "</font><font face="Times New Roman"> -sPAPERSIZE=a4" above with "</font><font face="Times New Roman">-sPAPERSIZE=letter".
+In addition, add "-t letter" to the command line argument for dvips.
+Note that you don't need to put <br>
+\pdfpagewidth=8.5in<br>
+\pdfpageheight=11in<br>
+</font>to the document preamble as some guideline suggests.</li>
+</ul>
+</ul>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">Some fonts such as ArialMT are not embeded in the generated PDF&nbsp;
+<br></span><ul><ul><li>The reason is that Microsoft cannot embed fonts such as ArialMT due to license. Below is the solution to fix it.</li><ol><li style="border: 0px none ; margin: 0px 0px 0.5em; padding: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; vertical-align: baseline;">open your pdf file,</li><li style="border: 0px none ; margin: 0px 0px 0.5em; padding: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; vertical-align: baseline;">select file -&gt; print</li><li style="border: 0px none ; margin: 0px 0px 0.5em; padding: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; vertical-align: baseline;">set your printer to be Adobe printer (assuming you already installed it)</li><li style="border: 0px none ; margin: 0px 0px 0.5em; padding: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; vertical-align: baseline;">click on properties</li><li style="border: 0px none ; margin: 0px 0px 0.5em; padding: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; vertical-align: baseline;">click the tab "Adobe PDF Settings"</li><li style="border: 0px none ; margin: 0px 0px 0.5em; padding: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; vertical-align: baseline;">uncheck "Rely on system fonts only; do not use document fonts"</li><li style="border: 0px none ; margin: 0px 0px 0.5em; padding: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; vertical-align: baseline;">click on the Edit... after Default Settings</li><li style="border: 0px none ; margin: 0px 0px 0.5em; padding: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; vertical-align: baseline;">click on Fonts, add those missing fonts to "Always Embed" (It is recommended to save the properties as a new setting.)</li><li style="border: 0px none ; margin: 0px; padding: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; vertical-align: baseline;">print the pdf file with the new settings, and your new pdf file should be good to go.</li></ol></ul></ul><font face="Times New Roman"><span style="font-weight: bold;"><br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;WinEdit 6.0 Version Specific:</span></font>
+Please see <a href="http://www.win.tue.nl/latex/faq.html#q18">here</a>
+for more tips.<br>
+<ul>
+<ul>
+<ul>
+<li>Open WinEdt </li>
+<li>Select: Options, Execution Modes </li>
+<li>Select ps2pdf </li>
+<li>Click on "Browse for Executable" (lower left corner)</li>
+<li>Browse to the <tt style="font-weight: bold;">gswin32c.exe</tt>
+executable in <tt>C:\Program Files\gs\gs9.02\bin</tt></li>
+<br>
+(you might have another version than 9.02, so please adjust this
+number) and select it. <li>Enter the following switches:
+<pre style="margin-left: 80px;">-dBATCH -dNOPAUSE -sDEVICE=pdfwrite -r600 -dCompatibilityLevel=1.4 -dPDFSETTINGS=/printer -dMaxSubsetPct=100 -dSubsetFonts=true<br></pre>
+</li>
+</ul>
+</ul>
+</ul>
+<ul>
+<ul>
+<ul>
+<li>Enter the following parameters: <br>
+<br>
+<pre>-sOutputFile="%N.pdf" "%N.ps"</pre>
+</li>
+</ul>
+</ul>
+</ul>
+<font face="Times New Roman">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</font> <font face="Times New Roman"><span style="font-weight: bold;">WinEdit 5.5 Version Specific:</span></font>
+<ul>
+<ul>
+<ul>
+<li>Open WinEdt </li>
+<li>Select: Options, Execution Modes </li>
+<li>Select ps2pdf<br>
+The Command Line Switches for <tt style="font-weight: bold;">gswin32c.exe</tt>
+are </li>
+</ul>
+</ul>
+<li>
+<pre style="margin-left: 80px;">-dBATCH -dNOPAUSE -sDEVICE=pdfwrite -r600 -dCompatibilityLevel=1.4<br></pre>
+<div style="margin-left: 80px;"> Add the following
+switches to this line: </div>
+<pre style="margin-left: 80px;">-dPDFSETTINGS=/printer -dMaxSubsetPct=100 -dSubsetFonts=true -dEmbedAllFonts=true<br></pre>
+</li>
+</ul>
+<font face="Times New Roman">&nbsp; &nbsp;
+&nbsp; &nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">WinEdit Past Version Specific:<br>
+</span> </font>
+<ul>
+<ul>
+<li><font face="Times New Roman">The ps2pdf
+batch file has to be changed. Assuming winedt is used, the batch file
+is typically under C:\Program Files\WinEdt Team\WinEdt\Bin. Open the
+batch file and add the option&nbsp;<b>-dPDFSETTINGS=/printer
+-dSubsetFonts=true -dEmbedAllFonts=true -dMaxSubsetPct=100
+-dCompatibilityLevel=1.3</b> for gswin32c.&nbsp; This
+approach has&nbsp; been tested with Ghostscript 8.13. Note that the
+typical options, -dSubsetFonts=true -dEmbedAllFonts=true, <i>do
+not</i> work without the pdf setting.&nbsp;</font> </li>
+</ul>
+</ul>
+<p style="margin-left: 40px;"><font face="Times New Roman">&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; It is possible however to tell PS2PDF to
+embed the fonts: (<a href="http://www.win.tue.nl/latex/faq.html#q18">copied
+from here</a>)</font> </p>
+<ul>
+<ul>
+<li><font face="Times New Roman">Open WinEdt</font>
+</li>
+<li><font face="Times New Roman">Select:
+Options, Execution Modes &nbsp;[if WinEdt 5, Options -&gt;
+Configuration Wizards -&gt; Tex Configuration Wizards -&gt;
+Customize Execution Modes]</font> </li>
+<li><font face="Times New Roman">Select ps2pdf</font></li>
+<li><font face="Times New Roman">The Command
+Line Switches for <tt>gswin32c.exe</tt> are<br>
+&nbsp; &nbsp; &nbsp; &nbsp; -dBATCH -dNOPAUSE
+-sDEVICE=pdfwrite -r600 -dCompatibilityLevel=1.4</font></li>
+<li> <font face="Times New Roman">Add the
+following switches to this line:</font>
+<pre><font face="Times New Roman"><span style="font-weight: bold;">-dPDFSETTINGS=/printer -dMaxSubsetPct=100 -dSubsetFonts=true -dEmbedAllFonts=true</span></font></pre>
+</li>
+</ul>
+</ul>
+<div style="margin-left: 40px;"><font face="Times New Roman">&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; From now on PS2PDF will embed all fonts.</font>
+</div>
+<font face="Times New Roman"> <br>
+</font>
+<ul>
+<li><font face="Times New Roman"><b><a name="recognizeeps"></a>How to recognize EPS figures?<br>
+TeXnicCenter specific </b><span style="font-weight: bold;">(1beta
+6.31)</span><b>:</b> </font>
+<ul>
+<li><font face="Times New Roman">When you use
+choose "LaTeX=&gt;PDF" in the shortcut box or in menu
+"Build-&gt;Select Output Profiles...", you cannot successfully
+compile a LaTeX source file including eps type figures. The reason is
+that "LaTeX=&gt;PDF" uses "PDFLaTeX", which doesn't support eps.
+More details can be seen <a href="http://www.tex.ac.uk/cgi-bin/texfaq2html?label=pdftexgraphics">here</a>.
+To address this issue, you can use the following solution:</font></li>
+<li><font face="Times New Roman"><b>Solution
+1: </b><span style="font-weight: bold;">Don't use
+"LaTeX=&gt;PDF" but use "LaTeX=&gt;PS=&gt;PDF"</span>!
+When you are editing the LaTeX source, you can use "LaTeX=&gt;DVI".
+When you want to produce a PS/PDF version to submit, choose
+"LaTeX=&gt;PS=&gt;PDF" or "LaTeX=&gt;PS".</font></li>
+<li><font face="Times New Roman"><span style="font-weight: bold;">Solution 2: </span>Try to
+install the&nbsp;MiKTeX 2.4.1705&nbsp;version, which is
+available at our research server:
+/home/public/tools/miktex/small-miktex-2.4.1705.exe</font></li>
+</ul>
+</li>
+</ul>
+<font face="Times New Roman">
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp; <span style="font-weight: bold;">WinEdt
+Specific:<br>
+</span> </font>
+<ul>
+<ul>
+<li><font face="Times New Roman">Don't use the
+"PDF LaTeX" button in the botton bar. In order to generate PDF,
+following this action sequence: first click "LaTeX" to generate the DVS
+file, then click "DVIPS" button to generate the PS file, and finally
+click "PS2PDF" to generate the PDF file.</font></li>
+</ul>
+</ul>
+<font face="Times New Roman"> <br>
+</font>
+<ul>
+<li><b><a name="space"><font face="Times New Roman">Space saving in LaTeX</font></a></b>
+<ul>
+<li><font face="Times New Roman">Put
+\vspace*{-5.0ex} (changing 5.0 to other numbers as you need) below or
+above figures, tables, or their titles.</font></li>
+<li><a href="http://www-h.eng.cam.ac.uk/help/tpl/textprocessing/squeeze.html"><font face="Times New Roman">Squeezing Space in LaTeX</font></a></li>
+<li><font face="Times New Roman"><a class="l" href="http://www-db.stanford.edu/%7Emanku/latex.html">LaTeX
+Tips and Tricks by Gurmeet Singh Manku</a></font></li>
+<li><font face="Times New Roman"><a class="l" href="http://www.cs.ubc.ca/%7Emurphyk/Teaching/latex_tips.txt">LaTeX
+tips. List compiled by Kevin Leyton-Brown and Kevin Murphy</a></font></li>
+<li><a href="http://amath.colorado.edu/documentation/LaTeX/reference/layout.html"><font face="Times New Roman">Page layout parameters</font></a></li>
+</ul>
+<p>&nbsp;</p>
+</li>
+<li><a href="http://bear.cba.ufl.edu/centers/MKS/author_information/laTex.asp">PDF
+Files Created with LaTeX: The font looks blurry</a></li>
+<ul>
+<li><a href="http://www.schnozzle.org/%7Ecoldwell/tetexps.html">Use
+-P pdf for dvips</a></li>
+</ul>
+<li><font face="Times New Roman"><b><a name="eps">Converting a MS PowerPoint slide/Word Image to
+EPS embedded in LaTeX</a> (here is another trick: <a href="http://www.cs.bu.edu/fac/reyzin/pictips.html">convert
+ppt to eps</a>)&nbsp;&nbsp;</b><br>
+<b>&nbsp;&nbsp; Option 1 (recommended):</b><br>
+</font>
+<ul>
+<li><font face="Times New Roman">Download and
+install <a href="http://www.openoffice.org/">OpenOffice</a></font></li>
+<li><font face="Times New Roman">Open a
+Powerpoint slide or Word with OpenOffice</font></li>
+<li><font face="Times New Roman">Export it as
+a EPS file (File-&gt;Export-&gt;Choose EPS file type)</font></li>
+<li><font face="Times New Roman">Open the
+generated EPS file with <a href="http://www.cs.wisc.edu/%7Eghost/">GhostView</a>,
+and turn on menu "Option-&gt;EPS Clip and EPS Warn". Choose the
+menu "File-&gt;PS to EPS", allow the bounding box to be
+automatically calculated, and save with a different filename, say,
+figure_final.eps.</font></li>
+<li><font face="Times New Roman">You may
+import figure_final.eps into a LaTeX document like&nbsp;<br>
+\begin{figure}[t]<br>
+\centerline{\includegraphics[scale=0.8,clip]{figure_final.eps}}<br>
+\mycaption{Figure name}{Figure.}<br>
+\label{fig:figure}<br>
+\end{figure}</font></li>
+</ul>
+<font face="Times New Roman">&nbsp;&nbsp; <span style="font-weight: bold;">Option 2:</span> Please
+follow the steps below: <br>
+Download and install: <a href="http://www.wmf2eps.de.vu/">wmf2eps</a>;
+this tool will provide you WMF2EPS Color PS L2 printer (I found MS
+Windows' default postscript printer is not perfect for printing eps
+files to nicely fit into LaTeX)&nbsp;</font>
+<ul>
+<li><font face="Times New Roman">Download <a href="http://520060481190-0001.bei.t-online.de/WMF2EPS/download.htm" target="NEW">WMF2EPS</a> to a temporary directory in
+your hard drive. Expand the downloaded file ("wmf2eps1.2.zip") to the
+directory of your choice, for example, "c:\Program Files\wmf2eps".</font></li>
+<li><font face="Times New Roman">You may
+install the (pseudo)-printer-definition file shipped with the program,
+"WMF2EPS2.PPD", which uses the built in standard PostScript driver of
+Windows 2000.&nbsp;</font>
+<ul>
+<li><font face="Times New Roman">Double-click
+on "Add printer" under "Settings", "Printers" in the Start menu. Add a
+local printer and select "FILE:" as the port. Then select "Have disk"
+and click on the "Browse" button to point to "c:\Program
+Files\wmf2eps\PSprint\Win2000\Standard\W2kPrint.INF". Windows will
+display the name of the selected printer (WMF2EPS Color PS L2). Click
+on "next". Windows will allow you to change the name of the printer and
+also if the printer will be the default ("No" should be selected). In
+the next two screens, select "Do not share this printer" and do not
+print a test page.</font></li>
+<li><font face="Times New Roman">"WMF2EPS
+Color PS L2" appears now in the list of printers. Right-click on its
+icon and select "Properties" from the context menu. In the "General"
+tab, select "Printing Preferences" and scroll down to "Document
+Options", "PostScript Options". Under "PostScript Output options"
+select "Encapsulated PostScript (EPS)". Click on "OK" to apply the
+change and close the properties dialog box.</font></li>
+</ul>
+</li>
+</ul>
+<font face="Times New Roman"> Download and install: <a href="http://www.projectory.de/emftoeps/">emftoeps</a><br>
+Save your PPT slide or other word images into Enhanced Metafile Format
+(EMF) such as figure.emf<br>
+Run the emftoeps tool; within the tool, open the EMF file you just saved<br>
+Choose menu "Edit-&gt;Preferences" (specify Resolution as default
+300dpi) and choose WMF2EPS Color PS L2 printer as your printer. In
+"print
+setup-&gt;properties-&gt;paper/quality-&gt;advanced-&gt;postscript"
+option, change postscript output option's value from "optimizing for
+speed" to encapsulated postscript". Also change paper size's value from
+A4 to postscript custom page size. These configurations are important
+to display your later exported eps file correctly in your LaTeX. You
+may also configure your printer's orientation as landscape.<br>
+Choose "Convert" from the menu to do either all files or those selected
+by you. Then the files are saved in the same directory, with the
+extension of ".eps", e.g., figure.eps.<br>
+Open the generated EPS file with <a href="http://www.cs.wisc.edu/%7Eghost/">GhostView</a>,
+and turn on menu "Option-&gt;EPS Clip and EPS Warn". Choose the
+menu "File-&gt;PS to EPS", allow the bounding box to be
+automatically calculated, and save with a different filename, say,
+figure_final.eps.</font>
+<ul>
+<li><font face="Times New Roman">You may
+import figure_final.eps into a LaTeX document like&nbsp;<br>
+\begin{figure}[t]<br>
+\centerline{\includegraphics[scale=0.8,clip]{figure_final.eps}}<br>
+\mycaption{Figure name}{Figure.}<br>
+\label{fig:figure}<br>
+\end{figure}<br>
+<br>
+</font> </li>
+</ul>
+</li>
+<li><font face="Times New Roman"><b><a name="png">Converting a PNG or another type of image to EPS
+embedded in LaTeX <br>
+</a></b>Don't use JPEG but use PNG to get lossless
+images, <a href="http://electron.mit.edu/%7Egsteele/pdf/">see
+here</a>. <br>
+Note that it is bad to convert your Powerpoint or Word figures to PNG
+images first and then convert the PNG images to EPS. You should convert
+</font><font face="Times New Roman"><font face="Times New Roman">Powerpoint or Word figures to</font>&nbsp;&nbsp;
+PDF and then to EPS (see the instruction above). But for screen
+snapshots, you may have to capture the screen and then paste it inside
+a picture-editing software tool (such as Windows Paint) and then save
+it as a PNG image. Then following the steps below to convert a PNG
+image to EPS. See more tips <a href="http://www.ieee-tmi.org/Author-Tips.html">here</a>.<br>
+Option 1: <span style="font-weight: bold;">(Recommended)</span><br>
+</font>
+<ul>
+<li>Download and install a free <a href="http://www.imagemagick.org/script/command-line-tools.php">ImageMagick</a>
+tool set. Run "convert XXXX.png XXXX.pdf" in your command line to
+convert your PNG file to a PDF file. (Please don't use the convert
+command there to convert your PNG file to a EPS file directly!) See the
+instruction on the convert command <a href="http://www.imagemagick.org/script/binary-releases.php#windows">here</a>.</li>
+<li>Then use your PDF reader (such as Adobe Acrobat) to
+open the PDF file and then save it as a EPS file.</li>
+</ul>
+<font face="Times New Roman">Option 2:<br>
+&nbsp;&nbsp; Please follow the steps below:</font>
+<ul>
+<li><font face="Times New Roman">Download an
+evaluation version of Paint Shop Pro at <a href="http://www.jasc.com/">www.jasc.com</a>. Althogh
+the site says it expires in 30 days, the software works pretty much the
+same way beyond that period.</font> </li>
+<li><font face="Times New Roman">Use Paint
+Shop Pro to open jpeg</font></li>
+<li><font face="Times New Roman">File-&gt;
+Save As, then choose the "Save as type": Encapsulated Postscript (eps)"
+and then click Save button.</font></li>
+<li><font face="Times New Roman">Use GSview to
+open the eps file.&nbsp;</font></li>
+<li><font face="Times New Roman">File-&gt;
+PS to EPS</font></li>
+<li><font face="Times New Roman">A dialog pops
+up and you check the checkbox of "Automatically calculate Bounding Box"
+and then click Yes button</font></li>
+<li><font face="Times New Roman">A dialog pops
+up and ask you what file you want to save the new eps. After you
+specify a new file name and click Save button, you are done.</font></li>
+</ul>
+<p>&nbsp; </p>
+</li>
+<li><b><font face="Times New Roman"><a name="merge"></a>Merging multiple tex files and bib
+files into a single tex file for final submission</font></b></li>
+<ul>
+<li><font face="Times New Roman">Sometimes some
+camera ready versions require you also submit your single LaTeX file
+besides your PDF and PS files. But usually you put different sections
+as different LaTeX source files and bib as a single file. Here is what
+you can do, first copy your main LaTeX file into another file with the
+name as expected by the camera ready submission. Then you start
+commenting out \input{XXX} by adding "%" before it ot delete the line.
+Then you replace the line with the content that you copy from the
+XXX.tex file. A bit tricky is about the bib file. Assume in your
+original main tex source file:<br>
+\bibliographystyle{abbrv}<br>
+\bibliography{yangtse}</font></li>
+<li><font face="Times New Roman">Assume your
+main tex file is oopsla.tex, then you can find oopsla.bbl in the same
+directory, which is the bibitem file compiled from your yangtse.bib
+file. Then you can copy the content in oopsla.bbl to replace the line
+"\bibliography{yangtse}" You can see <a href="../publications/src711-xie.tex">the
+single source tex file</a> that I produced for <a href="../publications/xie-oopsla04student.pdf">my
+SIGPLAN SRC 04 paper</a>. Note that there I do some tricks to
+make the bibitems with a smaller font size; you don't need to do that
+if you have enough space.</font></li>
+<li><font face="Times New Roman">Note that you
+should compile the resulting single tex file to see whether the
+generated PDF file is the same as the one you earlier generate from
+multiple tex files. Sometimes you may make mistakes in manually merging
+multiple tex files into a single tex file.</font></li>
+<li><font face="Times New Roman">For example you
+can use the preceding way to fulfill the requirement<span style="color: black;"><font size="3"> from <a href="http://www.sheridanprinting.com/typedept/oopsla2.htm">ACM
+OOPSLA 06</a>: "Please include all text (<span style="font-weight: bold;">including references from the
+.bbl file</span>) into your .tex file to make one complete .tex
+document. We do not want a directory of multiple files, just one file
+with all text from your submission. We do not need the figures. We are
+not recompiling your submission, only using the one (single-complete)
+source file to extract text and data that we need to make the metadata
+for ACM's digital library."</font></span></font></li>
+</ul>
+</ul>
+<ul>
+<font face="Times New Roman"> <br>
+</font> <li><b><a name="bibtex"><font face="Times New Roman">Managing bibtex database</font></a></b>
+<ul>
+<li><font face="Times New Roman">Windows/Linux/Mac
+platform: <a href="http://jabref.sourceforge.net/">Jabref
+</a></font></li>
+<li><a href="http://www.gerg.ca/software/btOOL/"><font face="Times New Roman">http://www.gerg.ca/software/btOOL/</font></a></li>
+<li><font face="Times New Roman"><a href="http://pag.csail.mit.edu/%7Emernst/software/#bibtex2web">bibtex2web:
+create web pages from BibTeX files</a> <a href="http://jabref.sourceforge.net/"><br>
+<br>
+</a></font></li>
+</ul>
+</li>
+<li><a onmousedown="return clk('http://research.microsoft.com/users/jckrumm/Word%20Tips/technical%20publishing.htm','res','1','')" href="http://research.microsoft.com/users/jckrumm/Word%20Tips/technical%20publishing.htm" name="word"><b><font face="Times New Roman">Technical
+Publishing with Microsoft Word</font></b></a>
+<ul>
+<li><font face="Times New Roman">Managing
+references: <a href="http://www.endnote.com/">EndNote</a>
++ <a href="http://www.scripps.edu/%7Ecdputnam/software/bibutils/bibutils.html">Bibutils</a>
+(which converse bibtex items to endnote format)<br>
+<br>
+</font> </li>
+</ul>
+</li>
+<li><b><a name="xfig"><font face="Times New Roman">Drawing figures using xfig</font></a></b>
+<ul>
+<li><a onmousedown="return clk(this,'res',1)" href="http://www.xfig.org/"><font face="Times New Roman">XFIG
+Drawing Program for the X Window System</font></a></li>
+<li><font face="Times New Roman"><a href="http://www.mit.edu/%7Esalcianu/ps_utils/LatexMacrosInXFig.html">LaTeX
+macros in Xfig figures<br>
+<br>
+</a></font></li>
+</ul>
+</li>
+<li><span style="font-weight: bold;"><a name="dia"></a>Drawing figures using Dia (<a href="http://live.gnome.org/Dia">download Dia here</a>)</span></li>
+<ul>
+<li>Dia is a free open source tool that implements nice
+features of MS Visio (like the way that <a href="http://www.openoffice.org/">OpenOffice</a>
+implements nice features of MS Office)</li>
+<li>To export to LaTeX/EPS format, right-click on the diagram
+and select <tt>Export (or click menu File-&gt;Export)</tt>,
+then select extension type <tt>Encapsulated Postscript (EPS)</tt>.</li>
+<li><span style="font-weight: bold;">Here are <a href="http://www.kronto.org/thesis/tips/best-drawings.html">some
+more tips</a> on tools for drawing figures and <a href="http://www.usq.edu.au/users/leis/notes/latex/pictures.html">some
+other tips</a><br>
+<br>
+</span></li>
+</ul>
+<li style="font-weight: bold;"><a name="figsidebyside"></a>Drawing
+figures side by side (<a href="http://www.dd.chalmers.se/latex/tips_e.html">from tips
+here</a>)</li>
+<ul>
+<li>To place to figures side by side, you could use <font color="#aa4444" face="courier">minipage</font>
+like this:
+<pre><font color="#aa4444" size="2">\begin{figure}<br>\begin{minipage}[b]{0.5\linewidth} % A minipage that covers half the page<br>\centering<br>\includegraphics[width=6cm]{bild1.eps}<br>\caption{En liten bild}<br>\end{minipage}<br>\hspace{0.5cm} % To get a little bit of space between the figures<br>\begin{minipage}[b]{0.5\linewidth}<br>\centering<br>\includegraphics[width=6cm]{bild2.eps}<br>\caption{En liten bild till}<br>\end{minipage}<br>\end{figure}<br></font></pre>
+With <font color="#aa4444" face="courier">minipage</font>,
+you get two different figures. Another way to do it is to use the
+package <font color="#aa4444" face="courier">subfigure</font>
+(<font color="#aa4444" face="courier">\usepackage{subfigure}</font>
+in the preamble). You will then get two subfigures inside one figure.
+<pre><font color="#aa4444" size="2">\begin{figure}<br>\centering<br>\subfigure[Bild a.] % caption for subfigure a<br>{<br> \label{fig:sub:a}<br> \includegraphics[width=4cm]{bild_a.eps}<br>}<br>\hspace{1cm}<br>\subfigure[Bild b.] % caption for subfigure b<br>{<br> \label{fig:sub:b}<br> \includegraphics[width=4cm]{bild_b.eps}<br>}<br>\caption{Bild a och b.}<br>\label{fig:sub} % caption for the whole figure<br>\end{figure}<br></font></pre>
+When you use <font color="#aa4444" face="courier">subfigure</font>
+you only get one figure, i.e figure 3. When you refer to the
+subfigures, they are called figure 3(a) and figure 3(b).<br>
+<br>
+</li>
+</ul>
+<li><b><font face="Times New Roman"><a name="visio"></a>Making project schedule with MS Visio
+(copied from MS Visio Help)/Converting Visio to EPS</font></b></li>
+<ul>
+<li>Simple solution for Viso -&gt; EPS (<a href="http://www.itee.uq.edu.au/%7Eemmerik/visioeps.html">copied
+from here</a>): export as WMF from Visio, then use wmf2eps (<a href="http://www.wmf2eps.de.vu/">http://www.wmf2eps.de.vu/</a>)
+to convert to EPS. </li>
+<li><font face="Times New Roman">Hide a data
+column: In a Gantt chart, click the column heading of the column you
+want to hide. &nbsp;On the Gantt Chart menu, click Hide Column.</font></li>
+<li><font face="Times New Roman">Redisplay a
+hidden data column: If you hide a column in your Gantt chart, you can
+display it again with the data preserved. Right-click the column to the
+right of where you want the hidden column to reappear, and then click
+Insert Column. In the Column type list, click the column type you
+previously hid, and then click OK. <br>
+You cannot hide the ID column in your Gantt chart.&nbsp;</font></li>
+<li>Convert Visio to EPS (<a href="http://www.itee.uq.edu.au/%7Eemmerik/visioeps.html">copied
+from here</a>)</li>
+<ul>
+<li>1. In Visio, Save As... a Windows MetaFile</li>
+<li>2. Import the MetaFile into a program that can handle
+it, such as Adobe InDesign or PageMaker. (Alternative: use ACDSee
+[using PaintShop or other picture editting software seems to get
+low-quality PDF] to open the Windows Metafile and print it to a PDF
+using tools such as PDF FactoryPro with resolution as high as 600dpi)</li>
+<li>3. Save as (or export to) a PDF.</li>
+<li>4. Use Acrobat (not Acrobat Reader) to export as an EPS.</li>
+<li>5. Use GSView to clean-up the bounding box (although
+Acrobat can do this too, just not as accurately).</li>
+</ul>
+</ul>
+</ul>
+<ul>
+<li><b><a name="table"><font face="Times New Roman">Converting Excel tables into LaTeX
+tables (tabular environment)</font></a></b>
+<ul>
+<li><font face="Times New Roman"><a href="http://www.jam-software.com/freeware/index.shtml" target="new">Excel2LaTeX</a> (<a href="http://www.ctan.org/tex-archive/support/excel2latex/" target="new">CTAN</a>)<br>
+<br>
+</font> </li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><b><a name="tricks"><font face="Times New Roman">Tricks in writing LaTeX source</font></a></b>
+<ul>
+<li><a href="http://www.st.cs.uni-sb.de/%7Elindig/tex.html">Tex
+Snippets by Christian Lindig</a></li>
+<li><a href="http://www.win.tue.nl/latex/faq.html"><font face="Times New Roman">LaTeX tips at TUE</font></a></li>
+<li><a href="http://web.engr.oregonstate.edu/%7Ekaj/ltxtips.html"><font face="Times New Roman">LaTeX tips</font></a></li>
+<li><font face="Times New Roman"><a href="http://www.tex.ac.uk/cgi-bin/texfaq2html?label=ps@empty">Page
+number on the first page</a><br>
+</font></li>
+<li><a href="http://centaur.maths.qmw.ac.uk/Info/pdf-faq.html"><font face="Times New Roman">Frequently Asked Questions about
+Adobe Portable Document Format</font></a></li>
+<li><font face="Times New Roman"><a href="http://www4.stat.ncsu.edu/%7Edavidian/st810a/">A
+course on Preparation for Statistical Research offered at NCSU Stat
+Dept.: it gives lot of useful stuff on LaTeX </a></font></li>
+<li><font face="Times New Roman"><a href="http://www.ics.uci.edu/%7Echenli/pdf-font-types/index.html">Use
+type-1 fonts in PDF paper submissions</a> by <a href="http://www.ics.uci.edu/%7Echenli/">Chen Li</a>&nbsp;</font></li>
+<li><font face="Times New Roman"><a href="http://www.cs.umd.edu/%7Enspring/software/">A tool for
+checking styles in LaTeX</a> source by <a href="http://www.cs.umd.edu/%7Enspring/">Neil Spring</a></font></li>
+<li><font face="Times New Roman" size="3"><a href="http://www.mit.edu/%7Esalcianu/ps_utils/">Alex
+Salcianu's tips on LaTeX</a></font></li>
+<li><font face="Times New Roman"><a href="http://www.kellogg.northwestern.edu/researchcomputing/miktex-install.htm">Tips
+at Northwestern</a>&nbsp; <a href="http://www.kellogg.northwestern.edu/researchcomputing/tex.htm">More
+tips</a></font></li>
+<li><font face="Times New Roman"><a href="http://www.math.uiuc.edu/%7Ehildebr/tex/theorems.html">Disabling
+automatic theorem numbering</a>:&nbsp;
+\newtheorem*{thma}{Theorem A}&nbsp; \begin{thma} We have ...
+\end{thma}&nbsp;</font></li>
+<li><a href="http://www.wfu.edu/%7Eekh/graphics/inlatex.html"><font face="Times New Roman">Working with Graphics LaTeX</font></a></li>
+<li><a href="http://www.math.uakron.edu/%7Edpstory/latx2pdf.html"><font face="Times New Roman">Using LaTeX to Create PDF Documents</font></a></li>
+<li><a href="http://www.math.uiuc.edu/%7Ehildebr/tex/"><font face="Times New Roman">More tips</font></a></li>
+<li><font face="Times New Roman"><a href="http://www.mathtype.com/en/products/texaide/" target="new">TeXaide</a>:
+A Graphical user interface to create LaTeX equation which you can then
+paste into a document.</font></li>
+<li><font face="Times New Roman"><a href="http://kenchiro.tripod.com/howtoPDF.html">Create PDF
+files</a>: recommended&nbsp;</font> </li>
+<li><font face="Times New Roman"><a onmousedown="return clk(this.href,'res','1','')" href="http://www-group.slac.stanford.edu/techpubs/help/figures/latex2efigs.html">Manipulating
+Figures in LaTeX2e</a> (Originally I had problems in putting a
+large figure in a specified position with <code>\begin{figure}[<em>h</em>]</code>,
+but I managed to accomplish this by specifying <code>\begin{figure}[<em>hp</em>]</code></font></li>
+<li><font face="Times New Roman">Putting a
+whole page figure &nbsp;&nbsp;<code>\begin{figure*}[htbp]</code></font></li>
+<li><a href="http://web.mit.edu/answers/latex/formatting/latex_spacing.html"><font face="Times New Roman">Double space in LaTeX</font></a></li>
+<li><font face="Times New Roman">When you want
+to force material over to the next page, e.g., when you want to balance
+the last page by moving references, you can use \vfill\eject between
+references to move more over to column two and produce a more balanced
+last page. (This command is great for forcing material over to the next
+page.)&nbsp;</font></li>
+<li><font face="Times New Roman">Use
+\ensuremath{\tau} when put math notations inside \begin{alltt} ...
+\end{alltt}</font></li>
+<li><font face="Times New Roman">Generally a
+figure should appear in the same page where it is referred for the
+first time. In addition, the figures should be numbered based on the
+order that they are referred in the text.</font></li>
+<li><font face="Times New Roman">If you want
+to force two figures together here is the trick: put their LaTeX source
+near each other and comment out the \end{figure}of the first figure and
+\begin{figure}[t] of the second figure. One example is shown below. The
+example also shows how to use \vspace to save space around figures.<br>
+<br>
+\begin{figure}[t]<br>
+%\vspace*{-5ex}<br>
+\centering<br>
+\centerline{\includegraphics[scale=0.35,clip,angle=270]{Fig6.eps}}<br>
+%\vspace*{-3ex}<br>
+\caption {\label{fig:localizationrate} Experimental<br>
+results of deviation-root localization ratios for value hit<br>
+spectra}<br>
+%\vspace*{-5ex}<br>
+%\end{figure}<br>
+%\begin{figure}[t]<br>
+\vspace*{-3ex} \centering<br>
+\centerline{\includegraphics[scale=0.35,clip,angle=270]{Fig7.eps}}<br>
+%\vspace*{-3ex}<br>
+\caption {\label{fig:pathlocalizationrate} Experimental results of <br>
+deviation-root localization ratios for path hit spectra}<br>
+\vspace*{-4ex}<br>
+\end{figure}<br>
+<br>
+<br>
+</font> </li>
+</ul>
+</li>
+<li><b><font face="Times New Roman"><a name="preprint">Preparing preprint versions for different
+conference styles</a> (in preprint version, you can put the
+conference info on the top of the paper's first page and add page
+numbers to the paper</font></b>
+<ul>
+<li><font face="Times New Roman">For LNCS
+style:<br>
+%keep your original style file<br>
+\documentclass{llncs}</font></li>
+<li><font face="Times New Roman">For IEEE
+style: (download and use <a href="ieee.cls">ieee.cls</a>,
+<a href="ieee.bst">ieee.bst</a>)<br>
+%replace your original document class with ieee<br>
+\documentclass[preprint]{ieee}<br>
+...<br>
+%replace your original bib style with ieee<br>
+</font> </li>
+<li><font face="Times New Roman">For ACM
+style: (download and use <a href="sig-alt-release2.cls">sig-alt-release2.cls</a>)<br>
+%replace your original document class with sig-alt-release2<br>
+\documentclass{sig-alt-release2}</font></li>
+<li><font face="Times New Roman">Then for
+either of these styles, add the following after the line of
+"\documentclass...."<br>
+%the following are the new added lines<br>
+\usepackage{fancyheadings}<br>
+\renewcommand\headrulewidth{0pt}<br>
+<br>
+\lhead{\scriptsize{\hspace*{0.2in}Appears in \textit{Proceedings of
+XXXXX (XXXX 04), Seattle, WA}}<br>
+\pagestyle{plain} \setcounter{page}{290}<br>
+<br>
+...<br>
+add the following line after the line of "\maketitle"<br>
+%the following is the new added line<br>
+\thispagestyle{fancy}<br>
+...<br>
+<br>
+</font> </li>
+</ul>
+</li>
+<li><b><font face="Times New Roman"><a name="lyx">Making Lyx exported LaTeX file to work with
+conference style file</a> (and produce preprint version):</font></b>
+<ul>
+<li><font face="Times New Roman">In Lyx, click
+menu Layout ==&gt; Document, in Document Setting dialog, put the
+following in the preamble:<br>
+\usepackage{LaTeX8}%this is ieee style file<br>
+\usepackage{times}<br>
+%the following is added if you want to produce a preprint
+version&nbsp;<br>
+%with conference info on the top of the first page and add page numbers<br>
+\usepackage{fancyheadings}<br>
+\renewcommand\headrulewidth{0pt}<br>
+<br>
+\lhead{\small{\hspace*{0.3in}Preliminary version. To appear in
+\textit{Proceedings of the 27th International Conference on Software<br>
+Engineering (ICSE 05)}}}<br>
+<br>
+\pagestyle{plain} \setcounter{page}{1}</font></li>
+<li><font face="Times New Roman">In Lyx, move
+mouse to the place after the "Abstract", click menu Insert ==&gt;
+Tex, then enter:<br>
+\thispagestyle{fancy}<br>
+<br>
+</font> </li>
+</ul>
+</li>
+<li><b><font face="Times New Roman">Counting
+words&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></b>
+<ul>
+<li><font face="Times New Roman">dvips -o -
+substra.dvi | ps2ascii | wc -w&nbsp;&nbsp; <a href="http://www.maths.ox.ac.uk/help/faqs/latex/word-count.shtml">word-count</a><br>
+<br>
+</font> </li>
+</ul>
+</li>
+<li><span style="font-weight: bold;"><font face="Times New Roman"><a name="pagenoformat"></a>Adding
+"A/B/C/D/.." before page numbers in LaTeX (format required in proposals
+at least to DoD agencies)</font></span></li>
+<ul>
+<li><font face="Times New Roman">Step 1: Put the
+following in preamble of your tex files:<br>
+\usepackage{fancyhdr}<br>
+\pagestyle{fancy} \cfoot{\sectionname-\thepage} \fancyhead{}<br>
+\cfoot{\sectionname-\thepage}<br>
+\renewcommand{\headrulewidth}{0pt}<br>
+<br>
+\newcommand{\sectiontitle}[1]{%<br>
+\pagenumbering{arabic}<br>
+\def\sectionname{#1}<br>
+}</font></li>
+<li><font face="Times New Roman">Step 2: Put
+\sectiontitle{D} in the beginning of the part that you want the page
+numbers to start with A/B/C/D...</font></li>
+</ul>
+</ul>
+<span style="font-family: Times New Roman;"><span style="font-weight: bold;">&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; If
+you&nbsp;want to output your proposal title and "D. Project
+Description" in the beginning of your proposal, you can&nbsp;use
+the following steps:</span></span>
+<ul>
+<ul>
+<li><font face="Times New Roman">Step 1: Put the
+following in preamble of your tex files:<br>
+\usepackage{fancyhdr}<br>
+\pagestyle{fancy} \cfoot{\sectionname-\thepage} \fancyhead{}<br>
+\cfoot{\sectionname-\thepage}<br>
+\renewcommand{\headrulewidth}{0pt}<br>
+<br>
+\newcommand{\sectiontitle}[3][Your proposal title]{%<br>
+\pagenumbering{arabic}<br>
+\def\sectionname{#3}<br>
+\begin{center}<br>
+\Large{\textbf{#1}}\\*[3mm] \Large{\textbf{\textsc{#2}}}<br>
+\end{center}<br>
+}</font></li>
+<li><font face="Times New Roman">Step 2: Put
+\sectiontitle{D. Project Description}{D} in the beginning of the part
+that you want the page numbers to start with A/B/C/D...</font></li>
+<span style="font-family: Times New Roman;"><span style="font-weight: bold;"></span><br>
+<br>
+</span><span style="font-family: Times New Roman;"></span>
+</ul>
+</ul>
+<ul>
+</ul>
+<ul style="font-family: Times New Roman,Times,serif;">
+<li><a name="nsf"></a><b><a href="http://www.nsf.gov/publications/pub_summ.jsp?ods_key=fontadvise707">Information
+on the Use of Designated Fonts in NSF Proposals</a>
+&nbsp;&nbsp; <a href="http://www.nsf.gov/pubs/policydocs/papp/gpg_2.jsp">More
+NSF Guidelines are here</a><br>
+</b></li>
+<ul>
+<li><a href="http://www.tug.dk/FontCatalogue/arial/">Using
+Arial in LaTeX</a></li>
+<li><a href="https://www.fastlane.nsf.gov/documents/tex/tex_03.jsp?page=0">Read
+about NSF guide on using LaTeX</a> &nbsp;(click "Next Page"
+till you read all the pages of instruction)</li>
+<li>Note that for LaTeX users, you DON'T need to do anything
+special in your LaTeX source file to accomodate the font requirement,
+since the defaultLaTeX font is Computer Modern, exactly required by
+NSF. For more see <a href="http://www.leuschke.org/Projects/UsingNSFFontsInLaTeX">this
+article</a></li>
+<li>You need to make sure "<font style="font-family: Times New Roman,Times,serif;" face="Georgia,Times"><span style="font-weight: bold;">All
+pages of the proposal must be numbered, including the 1 page summary.</span>"</font></li>
+<li>But what you (as a LaTeX user) need to make sure is to
+make your proposal "<span style="font-weight: bold;">margins,
+in all directions, must be at least an inch</span>.". Based
+on&nbsp;<a href="http://math.mit.edu/%7Ebrett/index.html">LaTeX
+help for NSF proposal writers at MIT Math</a>, you can put the
+following lines in the begining of your proposal to make sure your
+margines to be exactly an inch: <br>
+<br>
+\documentclass[11pt,letterpaper]{article}<br>
+<br>
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%<br>
+\pagestyle{plain}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+%%<br>
+%%%%%%%%%% EXACT 1in MARGINS
+%%%%%%%&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+%%<br>
+\setlength{\textwidth}{6.5in}&nbsp;&nbsp;&nbsp;&nbsp;
+%%&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+%%<br>
+\setlength{\oddsidemargin}{0in}&nbsp;&nbsp; %% (It is
+recommended that
+you&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; %%<br>
+\setlength{\evensidemargin}{0in}&nbsp; %%&nbsp; not change
+these parameters,&nbsp;&nbsp;&nbsp;&nbsp; %%<br>
+\setlength{\textheight}{8.5in}&nbsp;&nbsp;&nbsp;
+%%&nbsp; at the risk of having
+your&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; %%<br>
+\setlength{\topmargin}{0in}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+%%&nbsp; proposal dismissed on the basis&nbsp; %%<br>
+\setlength{\headheight}{0in}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+%%&nbsp; of incorrect
+formatting!!!)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; %%<br>
+\setlength{\headsep}{0in}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+%%&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+%%<br>
+\setlength{\footskip}{.5in}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+%%&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+%%<br>
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+%%<br>
+\newcommand{\required}[1]{\section*{\hfil
+#1\hfil}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+%%<br>
+\renewcommand{\refname}{\hfil References
+Cited\hfil}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+%%<br>
+\bibliographystyle{plain}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+%%<br>
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%<br>
+</li>
+</ul>
+<ul>
+<li>You can directly reuse the tempaltes that can be
+downloaded at <a href="http://math.mit.edu/%7Ebrett/index.html">LaTeX
+help for NSF proposal writers at MIT Math</a></li>
+<li style="font-family: Times New Roman,Times,serif;">Other
+guides:</li>
+<li style="font-family: Times New Roman,Times,serif;"><a style="font-family: Times New Roman,Times,serif;" href="http://www.math.rutgers.edu/proposals/proposalprocess.html">Guide
+at Rutgers</a></li>
+<li><a href="http://icm.mcs.kent.edu/research/fasthelp.html">Kent
+U. guide</a> &nbsp;<a href="http://icm.mcs.kent.edu/research/template/">Kent U.
+tempalte (for right margin but not for font)</a><br style="font-family: Times New Roman,Times,serif;">
+<b><br>
+</b></li>
+</ul>
+</ul>
+<ul>
+<li><b><a name="slides"><font face="Times New Roman">Presentation Slides</font></a></b>
+<ul>
+<li><a href="http://www.ncsu.edu/project/posters/IndexStart.html"><font face="Times New Roman">Creating effective poster
+presentations</font></a></li>
+<li><font face="Times New Roman"><a href="http://www.csc.ncsu.edu/faculty/doyle/">Jon Doyle</a>'s
+<a href="http://www.csc.ncsu.edu/faculty/doyle/pickup/beamer/">NCSU
+Beamer Style</a> (<a href="http://latex-beamer.sourceforge.net/">LaTeX Beamer
+class</a>)</font></li>
+<li><font face="Times New Roman"><a href="http://discovery.csc.ncsu.edu/%7Epning/index.html">Peng
+Ning</a>'s <a href="http://discovery.csc.ncsu.edu/%7Epning/software/NCSU-CS.pot">NCSU
+CS Powerpoint Template</a></font></li>
+<li><a href="2006CSCChartTemplate.ppt"><font face="Times New Roman">NCSU CS Powerpoint Template 2</font></a></li>
+<li><font face="Times New Roman"><a href="http://www4.stat.ncsu.edu/%7Edavidian/">Marie Davidian</a>'s
+<a href="http://www4.stat.ncsu.edu/%7Edavidian/st810a/seminar_handout.pdf">Presentations</a>
+using <a href="http://www.tug.org/applications/Seminar/">seminar.sty</a>
+(<a href="http://www4.stat.ncsu.edu/%7Edavidian/st810a/sem-user.ps">User's
+Guide for seminar.sty</a> by Van Zandt) and the <a href="http://www4.stat.ncsu.edu/%7Edavidian/st810a/seminar.tex">LaTeX</a>
+<a href="http://www4.stat.ncsu.edu/%7Edavidian/st810a/seminar.tex">
+source code</a> to create the slides (and the additional <a href="http://www4.stat.ncsu.edu/%7Edavidian/st810a/bpersp.eps">figure</a>)
+(in <a href="http://www4.stat.ncsu.edu/%7Edavidian/st810a/">a
+course on Preparation for Statistical Research offered at NCSU Stat
+Dept.</a>)</font></li>
+<li><font face="Times New Roman"><a href="http://www.st.cs.uni-saarland.de/%7Ezeller/">Andreas
+Zeller</a>'s <a href="http://www.st.cs.uni-saarland.de/%7Ezeller/stslide-1.1.tar.gz">LaTeX</a>
+<a href="http://www.st.cs.uni-saarland.de/%7Ezeller/stslide-1.1.tar.gz">
+style for presentations</a> (<a href="http://www.st.cs.uni-saarland.de/%7Ezeller/stslide.pdf">short
+intro</a> in Germany). Visit <a href="http://www.st.cs.uni-saarland.de/edu/adebug/2004/">his
+course web</a> to see what generated PDF slides look like.</font></li>
+<li><a href="http://www.plt-scheme.org/software/slideshow/"><font face="Times New Roman">Slidesshow (making slides with
+DrScheme)</font></a> </li>
+<li><font face="Times New Roman">Enable
+PowerPoint to typeset sentences and equations using the power of TeX: <a href="http://raw.cs.berkeley.edu/texpoint/">Texpoint</a>
+<a href="http://www.ecs.soton.ac.uk/%7Esrg/softwaretools/presentation/TeX4PPT/">TeX4PPT</a></font></li>
+<li><a onmousedown="return clk(this,'res',1)" href="http://www.cs.bu.edu/%7Ereyzin/pptips.html"><font face="Times New Roman">A Few Tips on How to Use PowerPoint
+for Mathematical Presentations</font></a></li>
+<li>Converting MS Powerpoint slides to a Google Slides file
+in Google Docs (if you fail to go through the normal
+exporting/importing way, try the following one):</li>
+<ul>
+<li>Step 1. Change slides in my Powerpoint slides to use
+slides to emulate animation (you can use the following free tool to
+automatically do that: <a href="http://www.dia.uniroma3.it/%7Erimondin/downloads.php" target="_blank">http://www.dia.uniroma3.it/~<wbr>rimondin/downloads.php</a>)</li>
+<li>Step 2. Create a Google Slides file fresh in Google
+Docs</li>
+<li>Step 3. For each slide in my Powerpoint slides, I
+select all entities in the slide and press "Ctrl+C" to copy them, and
+then press "Ctrl+V" to paste these entities to the editor browser
+window for the Google Slides file. Note that such entities are pasted
+as an image instead of editable entities in the Google Slides file.
+Indeed, I need to do some position and size adjustment on some images
+to make the images aligned well.</li>
+</ul>
+<li><font face="Times New Roman">If you want
+to collaborating with others on making slides or maintain your own
+slides in CVS, you might prefer to have a format&nbsp;that is in
+text form. The text-form requirement seems to leave MS Powerpoint out
+of the game. See more discussion below (the discussion includes
+thoughts and experiences from <a href="http://www-faculty.cs.uiuc.edu/%7Emarinov/">Darko
+Marinov</a>)</font>
+<ul>
+<li><font face="Times New Roman">You can
+use <a href="http://latex-beamer.sourceforge.net/">LaTeX</a>
+<a href="http://latex-beamer.sourceforge.net/">
+Beamer class</a> and then make PDFs to show, but it may be
+painful to draw figures.</font></li>
+<li><font face="Times New Roman">You can
+use <a href="http://www.plt-scheme.org/software/slideshow/">Slidesshow
+(making slides with DrScheme)</a> but if you are not comfortable
+with DrScheme, it might not be a good choice.</font></li>
+<li><font face="Times New Roman">The other
+option is to use some open-source replacement for PowerPoint, e.g., <a href="http://www.sun.com/software/star/openoffice/">OpenOffice</a>
+or <a href="http://www.sun.com/software/star/staroffice/index.jsp">StarOffice</a>.&nbsp;
+Those programs have better representation for slides (such as its <a href="http://www-128.ibm.com/developerworks/xml/library/x-think15/">ODP
+format written in XML</a>) and thus can be stored in CVS. They
+can also read Powerpoint files and convert them to their own text
+formats but note that OpenOffice and StarOffice sometimes may not
+correctly show some slides. It is good to use but it doesn't seem as
+good as PowerPoint (or even as controllable as LaTeX).<br>
+In order to compare two XML files from ODP, you need to split them in
+lines; you can use the following:<br>
+&nbsp;&nbsp; sed 's/&gt;/&gt;\<br>
+&nbsp; ' file.xml &gt;file-with-line-breaks.xml</font><br>
+<br>
+<font face="Times New Roman"> <br>
+</font> </li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a name="reference"><b><font face="Times New Roman">Reference formats</font></b></a>
+<ul>
+<li><a href="http://www.ece.uiuc.edu/pubs/ref_guides/ieee.html"><font face="Times New Roman">http://www.ece.uiuc.edu/pubs/ref_guides/ieee.html</font></a></li>
+<li><a href="http://www.luth.se/depts/lib/utbildning/referenser/index-en.shtml"><font face="Times New Roman">http://www.luth.se/depts/lib/utbildning/referenser/index-en.shtml</font></a></li>
+<li><a href="http://www.collectionscanada.ca/iso/tc46sc9/standard/690-2e.htm"><font face="Times New Roman">http://www.collectionscanada.ca/iso/tc46sc9/standard/690-2e.htm</font></a></li>
+<li><font face="Times New Roman"><a href="http://www.bournemouth.ac.uk/academic_services/documents/Library/Citing_References.pdf">http://www.bournemouth.ac.uk/academic_services/documents/Library/Citing_References.pdf</a><br>
+<br>
+</font> </li>
+</ul>
+</li>
+<li><b><a name="thoughts"><font face="Times New Roman">Organizing Thoughts and Keeping Track
+of Peer Research</font></a></b>
+<ul>
+<li><font face="Times New Roman">Windows/Linux/Mac:
+<a href="http://freemind.sourceforge.net/wiki/index.php/Main_Page">Freemind</a>,
+<a href="http://www.mindjet.com/us/">MindManager</a>
+</font> </li>
+<li><font face="Times New Roman">Webmon: <a href="http://www.markwell.btinternet.co.uk/webmon/">A
+freeware for monitoring website content</a> (<a href="http://www.download.com/3000-2381-10192535.html">link
+at download.com</a>)<br>
+</font> </li>
+</ul>
+</li>
+</ul>
+<ul>
+</ul>
+<font face="Times New Roman"> <br>
+</font>
+<ul>
+<li><font face="Times New Roman"><span style="font-weight: bold;"><a name="preparefinal"></a>
+The info listed below on Things to do on finishing up a paper won't be
+maintained. Please refer to <a href="https://sites.google.com/site/asergrp/Home/cameraready">Checklist
+for Preparing Camera-Ready Versions</a>, whose last part includes
+and evolves the info below.<br>
+<br>
+Things to do on finishing up a paper </span>(here are some more
+tips:<span style="font-weight: bold;">&nbsp;</span><a class="l" href="http://www.csc.liv.ac.uk/%7Ecomma/IOSPressBookArticleInstructionsLaTeX.pdf#search=%22LaTeX%20table%20figure%20position%22">Instructions
+for the Preparation of a Camera-Ready Manuscript in LaTeX</a>, <a class="l" href="http://encs.concordia.ca/scs/Forms/Form&amp;Style.pdf#search=%22widow%20Writing%20style%22">Form
+&amp; Style</a>, <a class="l" href="http://www.daniel-lemire.com/blog/rules-to-write-a-good-research-paper/">Rules
+to write a good research paper</a>).<span style="font-weight: bold;"><br>
+</span></font></li>
+<ul>
+<li>1. Turn on the spell check feature of your LaTeX editor
+(like TeXnicCenter) &nbsp;to show the real time warning as red
+underlines like in Microsoft Word. In TeXnicCenter,
+Tools-&gt;Options-&gt;Spelling tab-&gt; enable all checkbox
+options in that tab including "Check spelling while typing". Then
+before you send your paper for me to review or submit it to somewhere,
+make sure you don't have red marks except for those words from the
+program source code like method &nbsp;names or variable names. You
+can add those special words (such as "AspectJ") that are not in
+dictionaries but are ok in spelling to avoid their being marked with
+red underlines later on.</li>
+<li>2. Run the style-check on your LaTeX source files before
+you send me your paper for me to review or submit it to somewhere. The
+instructions of using style-check can be found <a href="#stylecheck">here</a>.<br>
+You should create style-check patterns as regular expressions based on
+common errors that I pionted out on your writing in the past.</li>
+<li>3. Print out your paper draft and go through it on
+hardcopy, identify errors, and fix them before you send me your paper
+for me to review or submit it to somewhere. Relying on screen reading
+is very inefficient in spotting out writing errors. I don't do review
+on screen but on hardcopies. In addition, don't revise your draft while
+you are still in the middle of reviewing it; revise your paper only
+after you finish reviewing the whole draft or at least a good portion
+of your draft.</li>
+<li><span style="font-weight: bold;">More other
+steps before you submit a&nbsp;paper:</span></li>
+<li><font face="Times New Roman">Use spell
+checker features of your editing software and fix typos.</font></li>
+<li><font face="Times New Roman">Use style-check
+to scan through your tex files (<a href="#stylecheck">instructions
+are below</a>) and fix any warnings that you think need to be
+fixd. Especailly pay attention to those warnings including ASE, which
+are created inside the ASE group.</font></li>
+<li><font face="Times New Roman">Check the top
+margine of your generated PDF. If they are too narrow, follow <a href="#topmargin">the instructions here</a></font></li>
+<li><font face="Times New Roman">If you are
+submitting to an IEEE conference, they usually provide an IEEE PDF
+eXpress interface for you to check the compatibability of your
+generated PDF. One common issue of generated PDFs is missing embeded
+fonts. Here are <a href="#missingfont">some instructions
+on dealing with the issues</a>.</font></li>
+<li><font face="Times New Roman">Some
+layout/format styles to follow:</font></li>
+<ul>
+<li><font face="Times New Roman">Try to
+arrange all figures or all tables on top of the page rather than in the
+middle or&nbsp;bottom of the page. If you have only one
+single-column figure/table, try to arrange it on top right-column.</font></li>
+<li>
+<div><font face="Times New Roman">In
+addition, don't&nbsp;make&nbsp;a table out of powerpoint or
+word and then transform it to an EPS&nbsp;figure. You should
+directly write the table in LaTeX formats. There are several
+advantages: they look nicer; their content&nbsp;can more easily
+modified in LaTeX; most importantly, you can use LaTeX macros to
+automatically update the contents by using a (Perl) script to transform
+the raw experimental data to the data entry data. See <a href="../publications/ase04rostra.zip">my ASE 04 LaTeX
+source example</a> in making tables.</font></div>
+</li>
+<li><font face="Times New Roman">Make sure all
+items in your bibliography are consistent. For example, make sure all
+references have page numbers (except for references on books or URL
+resources). If you use the format of "In Proc. International
+Conference" then stick to it for all references.&nbsp;If you use
+the abbreviation of conferences/workshops, then put abbreviations for
+all possible references.</font></li>
+</ul>
+<li><font face="Times New Roman">Look out for
+widow or orphan.&nbsp;You should try to avoid these, as they
+disrupt your layout, are unattractive, and can be confusing. To adjust
+space for avoiding them, put \vspace*{-5.0ex} (changing 5.0 to other
+numbers as you need; change - to + if you want to expand the space)
+below or above figures, tables, or their titles.</font></li>
+<ul>
+<li><font face="Times New Roman">An “orphan”
+is a word or short section of a line isolated at the bottom of a
+paragraph or a page. Occasionally reports will have orphan headings -
+that is, headings which are at the bottom of the page, with the text
+that follows them on the next page.</font></li>
+<li><font face="Times New Roman">A “widow” is
+a word or sentence isolated at the top of a page (especially an
+otherwise blank page).</font></li>
+<li>An "orphan" is an isolated line of text at the bottom
+of a page; an "orphan heading" is a heading without following body text
+at the bottom of the page; a "widow" is an isolated line of text at the
+top of a page.</li>
+<li><i><b>Thanks to <a href="http://www.conference-publishing.com/Instructions.php?Conf=ICSE12">Conference
+Publishing Solutions</a>: LaTeX:</b></i> In order to
+eliminate widows and orphans, you can copy the following commands into
+the LaTeX source before \begin{document} :
+<pre> \clubpenalty = 10000<br> \widowpenalty = 10000<br> \displaywidowpenalty = 10000<br> </pre>
+Sometimes, orhpans and widows will survive these commands, in which
+case a \vspace command might help. </li>
+</ul>
+<li>Balanced Columns on Last Page <br>
+<ul>
+<li><i><b>Thanks to <a href="http://www.conference-publishing.com/Instructions.php?Conf=ICSE12">Conference
+Publishing Solutions</a>: </b></i><i><b>LaTeX:</b></i>
+In order to balance the columns of the last page to the same length,
+insert the following command into the LaTeX source before
+\begin{document} :
+<pre> \usepackage{balance}</pre>
+and the following in the text that would appear as first column of the
+last page without balancing:
+<pre> \balance </pre>
+(Alternatively, \usepackage{flushend} might work as well.) </li>
+</ul>
+</li>
+<li> Headline-Style Capitalization <i><b>(Thanks
+to <a href="http://www.conference-publishing.com/Instructions.php?Conf=ICSE12">Conference
+Publishing Solutions</a>)</b></i>
+<ul>
+<li> Capitalize:
+<ul>
+<li>first and last word, first word after a colon
+(subtitle)</li>
+<li>all major words (nouns, pronouns, verbs,
+adjectives, adverbs)</li>
+</ul>
+</li>
+<li>Lowercase:
+<ul>
+<li>articles (<i>the</i>, <i>a</i>,
+<i>an</i>)</li>
+<li>prepositions (regardless of length)</li>
+<li>conjunctions (<i>and</i>, <i>but</i>,
+<i>for</i>, <i>or</i>, <i>nor</i>)</li>
+<li><i>to</i>, <i>as</i></li>
+</ul>
+</li>
+<li>Hyphenated Compounds:
+<ul>
+<li>always capitalize first element</li>
+<li>lowercase second element for articles,
+prepositions, conjunctions and if the first element is a prefix or
+combining form that could not stand by itself (unless the second
+element is a proper noun / proper adjective)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li> Font Embedding (Archive PDF, als known as PDF/A-1a, cf. <a href="http://aiim.org/Resources/Standards/Committees/PDFA">AIIM's
+PDF/A Committee</a>) <i><b>(Thanks to <a href="http://www.conference-publishing.com/Instructions.php?Conf=ICSE12">Conference
+Publishing Solutions</a>)</b></i>
+<ul>
+<li><i>Check</i> if a paper has all fonts
+embedded: <tt>pdffonts mypaper.pdf</tt>.</li>
+<li><i><b>Evince:</b></i> Open
+and print-to-file with the document viewer <a href="http://projects.gnome.org/evince/">Evince</a> in
+order to get all fonts embedded.</li>
+<li><i><b>LaTeX - config:</b></i>
+Update the file <tt>updmap.cfg</tt> of your LaTeX
+installation by changing some parameters as follows:
+<pre> pdftexDownloadBase14 true<br> dvipsPreferOutline true<br> dvipsDownloadBase35 true<br> dvipdfmDownloadBase14 true </pre>
+It has been reported that the package <tt>mathabx</tt> is
+causing Type-3 fonts to be used (under pdfTeX-1.40.9). </li>
+<li><i><b>LaTeX - via PostScript:</b></i>
+Use the tool chain latex + dvips + ps2pdf (the way via PostScript, see
+below for more on ps2pdf).</li>
+<li><i><b><a href="http://www.libreoffice.org/">LibreOffice</a> / <a href="http://www.openoffice.org/">OpenOffice</a>:</b></i>
+Font embedding can be achieved via "File" - "Export as PDF ..." - "PDF
+Options - General" - "Option PDF/A-1a".</li>
+<li><i><b>Word using PDFCreator as printer:</b></i>
+It has been reported that <a href="http://www.pdfforge.org/">PDFCreator</a>
+can be useful for creating PDF files from a Windows appliation. (Font
+embedding is decribed <a href="http://www.pdfforge.org/content/fonts">here</a>.)</li>
+<li><i><b>Word using Nitro as printer:</b></i>
+It has been reported that <a href="http://www.nitropdf.com/">Nitro
+PDF</a> produces problematic PDF files.</li>
+<li><i><b>Word 2007 using Adobe Acrobat
+Distiller 9:</b></i> "File" - "Print (Adobe PDF Printer)" -
+"Properties" - tab "Adobe PDF Settings" - uncheck "Rely on system fonts
+only; do not use document fonts" and then click "Edit (Default
+settings)" - "Fonts" - "Embed all fonts". (<a href="http://www.conference-publishing.com/templates/EmbeddingFontsinWord2007.pdf">Description
+with pictures</a> by Ipek Ozkaya)<br>
+In addition, check that the list of fonts under "Never Embed" is empty (<a href="http://www.conference-publishing.com/templates/EmbeddingFontListing.png">illustration</a>).</li>
+<li><i><b>Word using Postscript Printer and
+Acrobat Distiller:</b></i> Create a PDF file from Word by
+first printing to a Postscript file (using print-to-file) and then
+distilling the file into a PDF file (using Acrobat Distiller). If this
+does not embed all fonts, the printer driver might replace some fonts
+with machine-specific fonts, which is easy to <a href="http://support.microsoft.com/kb/822978">adjust in the
+properties of the printer driver</a>. (This method is reported to
+be effective if converting from Word directly to PDF using Distiller
+adds random white boxes in the paper, typically near pictures.)</li>
+<li><i><b>PostScript:</b></i> If
+your PDF file does not have all fonts embedded, try to produce a PS
+file, e.g., using latex and dvips, and then convert that PS file to PDF
+using ps2pdf as follows:<br>
+<tt>ps2pdf -dSubsetFonts=true -dEmbedAllFonts=true
+-dCompatibilityLevel=1.4 -dPDFSETTINGS=/prepress -sPAPERSIZE=letter
+mypaper.ps mypaper.pdf</tt></li>
+</ul>
+</li>
+<li><font face="Times New Roman">Some
+conferences may require you to submit a single tex file including
+everything. But usually you have multiple tex files for a paper. Here
+you can find <a href="#merge">the guidelines of merging
+multiple tex files and bib files into a single file</a>.</font></li>
+</ul>
+</ul>
+<ul>
+<li><span style="font-weight: bold;"><font face="Times New Roman"><a name="stylecheck"></a>Using
+style-check in our research server</font></span></li>
+<ul>
+<li><font face="Times New Roman">I have
+installed <a href="http://www.cs.umd.edu/%7Enspring/software/style-check-readme.html">style-check</a>
+in our research server. To use it, you need to go to your home
+directory, type in:<br>
+&nbsp; ln -s /home/public/tools/stylecheck/.style-censor
+&nbsp;.style-censor<br>
+This command generates a symblic link to the ASE group common ruleset
+for checking. You only need to type in this command once. Next time
+when you log in, the link is still there.</font></li>
+<li style="font-family: Times New Roman,Times,serif;"><font face="Times New Roman">You upload your tex files to a
+directory under your home directory in the server.</font></li>
+<li style="font-family: Times New Roman,Times,serif;"><font face="Times New Roman">Go to the directory, type in the
+command line:<br>
+&nbsp; style-check.rb -v *.tex<br>
+If you want to save the checking results, you can type in:<br>
+&nbsp;style-check.rb -v *.tex &gt; checklog.txt</font></li>
+<li style="font-family: Times New Roman,Times,serif;"><font face="Times New Roman">You can view the log either in Linux
+or download it to your local machine.</font></li>
+<li style="font-family: Times New Roman,Times,serif;"><font face="Times New Roman">Try to search the line starting with
+"(matched". Then the line above it is the verbose description of what
+the problem is. The line fruther above is the place where the problem
+is found and the end of the line shows the matched phrase.</font></li>
+<li><font face="Times New Roman">You can focus
+on those version descriptions that start with " ASE "</font></li>
+<li><span style="font-weight: bold;"><font face="Times New Roman">You are encouraged to add more rules
+that you think you often violate in to the rule set!</font></span></li>
+<ul>
+<li><font face="Times New Roman">To update to
+the rule set, you can modify ~\.style-censor and add whatever rules
+that are specific to you. Your group members can also get to share them
+automatically..</font></li>
+</ul>
+<ul>
+<li><font face="Times New Roman">Note that if
+you plan to add more rules here, please put comments and put " ASE " in
+the beginning of your comments so that we know the rules are created by
+our NCSU ASE group and&nbsp;warnings related to them should be paid
+more attention. Note that after "%" you need to specify a class
+(syntax, capitalize, phrase, spelling, or ignoredcommand) and then put
+your comments. More details on them can be found at <a href="http://www.cs.umd.edu/%7Enspring/software/style-check-readme.html">here</a>.</font></li>
+<li><font face="Times New Roman">To read how
+the existing rule sets are written. You can take a look at the files
+located at /etc/style-check.d/ and the rule set inside our ASE
+group:&nbsp;/home/public/tools/stylecheck/.style-censor. When you
+directly modify your ~/.style-censor in your home directory, the
+changes shall be reflected on the one shared by us because of the
+symbolic link you created earlier.</font></li>
+<li><font face="Times New Roman">I have
+incorporated many guidelines in my <a href="../publications/writeissues.pdf">Common Technical
+Writing Issues</a>&nbsp;slides. But some of them may not be
+easily incorporated. You shall take a look at the slides.</font></li>
+</ul>
+</ul>
+</ul>
+<ul>
+<li><span style="font-weight: bold;"><a name="referenceformat"></a>Reference formats</span>&nbsp;</li>
+<ul>
+<li>Make sure you have consistent format for the references.
+I usually use the following format:<br>
+<br>
+D. Shepherd, J. Palm, L. Pollock, and M. Chu-Carroll. Timna: a
+framework for automatically combining aspect mining analyses. In Proc.
+20th IEEE/ACM International Conference on Automated Software
+Engineering, pages 184-193, <br>
+2005.<br>
+<br>
+To save space, you don't need to put conference locations, months,
+publishers, or "(Proc)eedings of the". The items in the above format
+are mandatory. But if you do want to include any of them in your
+references, include them **consistently** for all references.<br>
+</li>
+<li>If you copy bib entries from ACM Lib, you often need to
+turn the first character of the words in the conference title to upper
+cases.</li>
+<li>In my bib file, I usually put the id for a bib entry with
+AuthorlastnameYear:FirstConcreteWordOfTitle like "sen06:cute" for the
+entry below.</li>
+<li>If some characters of some words in your reference paper
+title should be upper case, you need to do special things as below.
+Bibtex automatically turns the words (except for the first character of
+the the first word) into lower cases. To force some words in the
+generated title to maintain their original upper cases, you should put
+{} around these words.<br>
+<br>
+For example, you may have title like:<br>
+@inproceedings{sen06:cute,<br>
+&nbsp; author =&nbsp;&nbsp;&nbsp; {Koushik Sen and Gul
+Agha},<br>
+&nbsp; title =&nbsp;&nbsp;&nbsp; {CUTE and jCUTE :
+Concolic Unit Testing and Explicit Path Model-Checking Tools},<br>
+&nbsp; booktitle =&nbsp; {Proc. 18th International Conference
+on Computer Aided Verification},<br>
+&nbsp; year =&nbsp; {2006},<br>
+&nbsp; pages =&nbsp; "419--423",<br>
+&nbsp; note =&nbsp;&nbsp; {(Tool Paper)},<br>
+}<br>
+<br>
+<span style="font-family: Times New Roman,Times,serif;">
+Then the generated reference would include a title like "Cute and
+jcute: Concolic ...". To generate "CUTE and jCUTE: Concolic ...", you
+need to put {} around "CUTE and jCUTE" in the bib file like:</span><br style="font-family: Times New Roman,Times,serif;">
+<span style="font-family: Times New Roman,Times,serif;">
+&nbsp;title =&nbsp;&nbsp;&nbsp; {{CUTE and jCUTE} :
+Concolic Unit Testing and Explicit Path Model-Checking Tools},</span><br style="font-family: Times New Roman,Times,serif;">
+<br style="font-family: Times New Roman,Times,serif;">
+</li>
+</ul>
+<li style="font-family: Times New Roman,Times,serif;"><a name="nsfpub"></a>Uploading publications in the <a href="https://www.fastlane.nsf.gov/researchadmin/">NSF
+reporting system</a> (e.g., for perparing your yearly report or
+final report). Instead of manually entering your publication
+information, the steps below enable that you can reuse your existing
+bib entries and your publication lists from each previous year when
+preparing your final report.</li>
+<ul style="font-family: Times New Roman,Times,serif;">
+<li>Create your publication list in the bib format.</li>
+<li>Replace each "@inproceedings" with "@ARTICLE" and replace
+each "booktitle" with "journal" (since the NSF reporting system allows
+only journal publications but no conference publications, you need to
+change your conference papers' format to journal format)</li>
+<li>Install and use the <a href="http://www.it.usyd.edu.au/%7Etapted/bib2endnote.html">bib2endnote</a>
+tool to import the bib file and save it as an EndNote XML file (note
+that this XML file doesn't seem to be recognized by the NSF system and
+you need to do the subsequent steps)</li>
+<li>Use the <a href="http://www.endnote.com/">Endnote</a>
+software to import the EndNote XML file to an EndNote library.</li>
+<li>Export the EndNote library as an XML file</li>
+<li>Upload the XML file in the NSF reporting system: the box
+below "Upload Journal Publication citation(s) from your <i>EndNote</i>
+library:&nbsp;<span class="itemsm">(Note: To
+successfully perform a file upload, all EndNote libraries must be
+exported in XML format and include the following required fields:
+Author(s), Title, Journal, Year.)"</span></li>
+</ul>
+<li style="font-family: Times New Roman,Times,serif;"><a href="http://www.orbeon.com/blog/2006/07/14/disabling-pdf-display-in-firefox/">Disabling
+PDF Display in Firefox</a> &nbsp;or using <a href="http://www.foxitsoftware.com/pdf/rd_intro.php">Foxit</a>　</li>
+</ul>
+<p style="margin-left: 80px; font-family: Times New Roman,Times,serif;">Go
+to the “Tools -&gt; Options” menu<br>
+Select the “Downloads” tab<br>
+Open “View and Edit Actions…”<br>
+Enter “pdf” in the “Search” box<br>
+Select “Change Action…”<br>
+Change the selection from “Use this Plugin” to “Open them with the
+default application”, which should point to Adobe Acrobat, Adobe
+Acrobat Reader, or your favorite PDF viewer</p>
+<p><font face="Times New Roman"><a style="font-family: Times New Roman,Times,serif;" href="../advice.htm#writing">Advice Collection on Technical
+Writing</a><span style="font-family: Times New Roman,Times,serif;"> in Tao
+Xie's comprehensive </span><a style="font-family: Times New Roman,Times,serif;" href="advice.htm">Advice Collections</a><br style="font-family: Times New Roman,Times,serif;">
+<a style="font-family: Times New Roman,Times,serif;" href="../seconferences.htm">Software Engineering Conferences</a><span style="font-family: Times New Roman,Times,serif;">&nbsp;</span><br>
+<a href="http://www.cs.queensu.ca/%7Egradseries/help/gradresources.htm">Queens'
+U Graduate Resources</a>&nbsp;&nbsp;<br>
+<a href="http://www.chinatex.org/">Chinatex.org</a><br>
+</font> </p>
+<p>&nbsp;</p>
+<p><a href="../index.htm" target="_top" name="Top"><font face="Times New Roman"><img src="../home.gif" align="left" border="0" height="50" width="54"></font></a></p>
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript"></script>
+<script type="text/javascript">_uacct = "UA-3068975-19";
+urchinTracker();
+</script>
+</body></html>
