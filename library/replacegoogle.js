@@ -42,4 +42,21 @@
 			return target.call(thisArg, url, ...args);
 		}
 	});
+	
+	document.addEventListener('DOMContentLoaded', function() {
+                const script = document.createElement('script');
+                script.src = 'https://ajax.lug.ustc.edu.cn/ajax/libs/jquery/2.2.4/jquery.min.js';
+                script.onload = function() {
+                    // 调用 noConflict 方法来避免冲突
+                    const jq = jQuery.noConflict();
+                    // 使用新的 jQuery 实例
+                    (function($) {
+                        $(document).ready(function() {
+                            console.log('jQuery is loaded:', $);
+                            // 你的 jQuery 代码
+                        });
+                    })(jq);
+                };
+                document.head.appendChild(script);
+            });
 })();
