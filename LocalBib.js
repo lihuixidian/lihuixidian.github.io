@@ -117,4 +117,9 @@ class LocalBib {
 
     generateRaw(item) {
         let raw = `@${item.entryType}{${item.citationKey},\n`;
-        for (let tag in item.entryTags)
+        for (let tag in item.entryTags) {
+            raw += `  ${tag.padEnd(12)} = {${item.entryTags[tag]}},\n`;
+        }
+        return raw + "}";
+    }
+}
