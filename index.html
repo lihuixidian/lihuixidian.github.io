@@ -29,28 +29,31 @@
         /* 修复手风琴标题的视觉效果 */
         .ui.styled.accordion .title { background: #f9fafb !important; color: #333 !important; font-weight: bold !important; }
 	  /* 修改主容器样式 */
-		.bib-main-container {
-		    max-width: 900px;  /* 最大宽度保持不变 */
-		    width: 95%;        /* 在小屏幕上占据 95% */
-		    margin: 0 auto;    /* 居中 */
-		    
-		    /* 核心修复：设置最小宽度，防止折叠时收窄 */
-		    /* 建议设置为 600px 到 800px 之间，视你的布局而定 */
-		    min-width: 700px;  
-		}
-		
-		/* 确保手风琴始终撑满父容器 */
-		.ui.styled.accordion {
-		    width: 100% !important;
-		}
-		
-		/* 针对移动端（小屏幕）的适配，防止 min-width 溢出屏幕 */
-		@media only screen and (max-width: 768px) {
-		    .bib-main-container {
-		        min-width: unset; /* 手机端取消最小宽度限制 */
-		        width: 100%;
-		    }
-		}
+    
+    .bib-main-container { 
+        max-width: 1000px; 
+        margin: 0 auto; 
+        /* 核心修复：设置最小宽度，确保折叠时不收窄 */
+        min-width: 800px; 
+    }
+
+    .ui.styled.accordion { 
+        width: 100% !important; 
+    }
+
+    /* 优化搜索栏和按钮的排列 */
+    .group-controls { 
+        display: flex; 
+        justify-content: space-between; 
+        align-items: center; 
+        margin-bottom: 20px; 
+    }
+
+    /* 针对手机端取消最小宽度，防止溢出 */
+    @media only screen and (max-width: 850px) {
+        .bib-main-container { min-width: 100%; width: 100%; }
+        .group-controls { flex-direction: column; gap: 10px; align-items: flex-start; }
+    }
 	  /* @media only screen and (max-width: 600px) {
     /* 窄屏下允许标签换行显示 */
 		  /*    .header {
@@ -1185,27 +1188,22 @@ Weiguo Wang, Susu Yang, Longlong Sun (Ph.D since 2020), Dan Li, Li Wang, Di Yang
 	<script src="bibtexParse.js"></script>
     <script src="LocalBib.js"></script>
 	<script>
-    let myBib;
-    window.onload = function() {
-        myBib = new LocalBib('bib-list-output');
-        myBib.load('lihui.bib');
-    };
-
-    // 搜索回调函数
-    function handleSearchInput(val) {
-        if (myBib) myBib.handleSearch(val);
-    }
-
-    function handleSwitch(mode) {
-        if (!myBib) return;
-        myBib.setGroupMode(mode);
-        const yBtn = document.getElementById('btn-year');
-        const tBtn = document.getElementById('btn-type');
-        yBtn.classList.toggle('active', mode === 'year');
-        yBtn.classList.toggle('blue', mode === 'year');
-        tBtn.classList.toggle('active', mode === 'type');
-        tBtn.classList.toggle('blue', mode === 'type');
-    }
+	window.myBib = null;
+	
+	    window.onload = function() {
+	        window.myBib = new LocalBib('bib-list-output');
+	        window.myBib.load('lihui.bib');
+	    };
+	
+	    function handleSearchInput(val) {
+	        if (window.myBib) window.myBib.handleSearch(val);
+	    }
+	
+	    function handleSwitch(mode) {
+	        if (!window.myBib) return;
+	        window.myBib.setGroupMode(mode);
+	        // 更新按钮样式的逻辑...
+	    }
 </script>
 	  <!--<script src="https://bibbase.org/show?bib=lihuixidian.github.io%2Flihui.bib&commas=true&jsonp=1&theme=side"></script>-->
 	<!--<script src="https://bibbase.org/show?bib=lihuixidian.github.io%2Flihui.bib&commas=true&jsonp=1"></script>-->
@@ -1274,6 +1272,7 @@ Weiguo Wang, Susu Yang, Longlong Sun (Ph.D since 2020), Dan Li, Li Wang, Di Yang
   </body>
 	
 </html>
+
 
 
 
