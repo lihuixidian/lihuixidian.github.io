@@ -1,69 +1,36 @@
-/* 容器 */
-#bib-list {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    max-width: 800px;
-    margin: 20px auto;
-    color: #333;
+/* 基础容器 */
+#bib-container {
+    margin-top: 2rem;
 }
 
-/* 年份标题 */
-.bib-year-header {
-    border-bottom: 2px solid #3498db;
-    padding-bottom: 5px;
-    margin-top: 40px;
-    color: #2c3e50;
-    font-size: 1.6em;
-}
-
-/* 单条文献条目 */
+/* 论文条目样式微调 */
 .bib-item {
-    padding: 15px 0;
-    border-bottom: 1px solid #eee;
+    padding: 1.2rem 0 !important;
 }
 
 .bib-title {
-    font-weight: bold;
-    font-size: 1.1em;
-    color: #1a73e8;
-    margin-bottom: 5px;
+    display: inline;
+    color: #1a73e8 !important;
 }
 
-.bib-author {
-    color: #555;
-    font-size: 0.95em;
+/* bibbase_note 容器 */
+.bib-note {
+    display: inline-block;
+    vertical-align: middle;
 }
 
-.bib-venue {
-    color: #888;
-    font-size: 0.9em;
-    font-style: italic;
+/* 修正手风琴样式 */
+.bib-accordion .title {
+    background: #f9fafb !important;
+    font-weight: bold !important;
+    font-size: 1.2rem !important;
 }
 
-/* 链接和按钮 */
-.bib-links { margin-top: 10px; }
-.bib-links a, .bib-btn {
-    text-decoration: none;
-    font-size: 0.8em;
-    color: #666;
-    background: #f8f9fa;
-    border: 1px solid #ddd;
-    padding: 3px 8px;
-    border-radius: 4px;
-    cursor: pointer;
-    margin-right: 5px;
+.bib-year-content {
+    padding: 0 1.5rem !important;
 }
-.bib-links a:hover, .bib-btn:hover { background: #e9ecef; }
 
-/* 原始 BibTeX 代码块 */
-.bib-raw-code {
-    display: none;
-    background: #2d3436;
-    color: #dfe6e9;
-    padding: 15px;
-    font-family: 'Courier New', monospace;
-    font-size: 12px;
-    border-radius: 5px;
-    margin-top: 10px;
-    white-space: pre-wrap;
+/* BibTeX 代码块显隐 */
+.bib-raw-code.show {
+    display: block !important;
 }
-.bib-raw-code.show { display: block; }
