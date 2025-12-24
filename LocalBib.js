@@ -135,29 +135,36 @@ class LocalBib {
         this.container.innerHTML = html;
     }
 
-    createItemHtml(item) {
-        const tags = item.entryTags || {};
-        const authorsHtml = this.formatAuthors(tags.author);
-        const note = tags.bibbase_note ? `<span class="bib-note-container">${tags.bibbase_note}</span>` : '';
-        
-        return `
-            <div class="item" style="padding: 0.6em 0 !important;">
-                <div class="content">
-                    <div class="header" style="color: #1a73e8; font-size: 1.05em; line-height: 1.2;">
-                        ${tags.title || 'Untitled'} ${note}
+   createItemHtml(item) {
+    const tags = item.entryTags || {};
+    const authorsHtml = this.formatAuthors(tags.author);
+    // 处理 bibbase_note，确保它是一个块状容器，并设置不压缩
+    const note = tags.bibbase_note ? 
+        `<div class="bib-note-container" style="flex-shrink: 0; margin-left: 20px; text-align: right;">${tags.bibbase_note}</div>` : '';
+    
+    return `
+        <div class="item" style="padding: 0.6em 0 !important;">
+            <div class="content">
+                <div class="header" style="display: flex; justify-content: space-between; align-items: flex-start; width: 100%;">
+                    <div class="bib-title" style="color: #1a73e8; font-size: 1.05em; line-height: 1.2; flex-grow: 1;">
+                        ${tags.title || 'Untitled'}
                     </div>
-                    <div class="description" style="margin-top: 2px; color: #444; font-size: 0.95em;">
-                        ${authorsHtml}. 
-                        <span style="color: #666;"><em>${tags.journal || tags.booktitle || 'Preprint'}</em>, ${tags.year || ''}</span>
-                    </div>
-                    <div class="extra" style="margin-top: 6px;">
-                        ${tags.url ? `<a href="${tags.url}" target="_blank" class="ui mini basic blue button" style="padding: 0.4em 0.8em !important;">PDF</a>` : ''}
-                        <button class="ui mini basic gray button" style="padding: 0.4em 0.8em !important;" onclick="const p = this.nextElementSibling; p.style.display = (p.style.display === 'none' || p.style.display === '') ? 'block' : 'none'">BibTeX</button>
-                        <pre style="display:none; background:#f4f4f4; padding:8px; margin-top:8px; font-size:11px; overflow-x:auto; border-left: 3px solid #ccc;">${this.generateRaw(item)}</pre>
-                    </div>
+                    ${note}
                 </div>
-            </div>`;
-    }
+
+                <div class="description" style="margin-top: 2px; color: #444; font-size: 0.95em;">
+                    ${authorsHtml}. 
+                    <span style="color: #666;"><em>${tags.journal || tags.booktitle || 'Preprint'}</em>, ${tags.year || ''}</span>
+                </div>
+                
+                <div class="extra" style="margin-top: 6px;">
+                    ${tags.url ? `<a href="${tags.url}" target="_blank" class="ui mini basic blue button" style="padding: 0.4em 0.8em !important;">PDF</a>` : ''}
+                    <button class="ui mini basic gray button" style="padding: 0.4em 0.8em !important;" onclick="const p = this.nextElementSibling; p.style.display = (p.style.display === 'none' || p.style.display === '') ? 'block' : 'none'">BibTeX</button>
+                    <pre style="display:none; background:#f4f4f4; padding:8px; margin-top:8px; font-size:11px; overflow-x:auto; border-left: 3px solid #ccc;">${this.generateRaw(item)}</pre>
+                </div>
+            </div>
+        </div>`;
+}
 
     generateRaw(item) {
         try {
