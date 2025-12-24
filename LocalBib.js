@@ -2,7 +2,7 @@ class LocalBib {
     constructor(containerId) {
         this.container = document.getElementById(containerId);
         this.rawEntries = [];
-        this.filteredEntries = []; // 新增：用于存储过滤后的数据
+        this.filteredEntries = [];
         this.currentMode = 'year';
         this.typeMap = {
             'article': 'Journal Articles',
@@ -16,48 +16,54 @@ class LocalBib {
         };
     }
 
-    // 格式化作者的方法：你可以在这里加粗自己的名字
-formatAuthors(authorStr) {
-    if (!authorStr) return 'Unknown Authors';
-    
-    // 1. 将 "and" 替换为逗号并拆分为数组
-    let authorList = authorStr.split(/ and |, /);
-    
-    // 2. 处理每个作者
-    let formattedAuthors = authorList.map(name => {
-        let cleanName = name.trim();
-        
-        // --- 技巧 A: 加粗你自己的名字 ---
-        // 替换为你论文中使用的名字
-        let displayName = cleanName;
-        if (cleanName.includes("Hui Li") || cleanName.includes("Li, Hui")) {
-            displayName = `<strong>${cleanName}</strong>`;
+    // 格式化作者：增加了转义处理，防止单引号导致崩溃
+    formatAuthors(authorStr) {
+        if (!authorStr) return 'Unknown Authors';
+        try {
+            // 兼容多种分隔符
+            let authorList = authorStr.split(/ and |; |,/);
+            return authorList.map(name => {
+                let cleanName = name.trim();
+                if (!cleanName) return '';
+
+                // 处理名字中的单引号，防止 onclick 语法错误
+                let escapedName = cleanName.replace(/'/g, "\\'");
+
+                // 检查是否需要加粗自己 (请在此处修改你的名字)
+                let displayName = cleanName;
+                if (cleanName.includes("Hui Li")||cleanName.includes("Li, Hui")) { 
+                    displayName = `<strong>${cleanName}</strong>`;
+                }
+
+                // 返回可点击的链接，注意 myBib 必须与 index.html 中的变量名一致
+                return `<a href="javascript:void(0)" 
+                           onclick="if(window.myBib) { myBib.handleSearch('${escapedName}'); document.getElementById('bib-search').value='${escapedName}'; }" 
+                           style="color: inherit; text-decoration: none; border-bottom: 1px dashed #ccc;">${displayName}</a>`;
+            }).filter(n => n !== '').join(', ');
+        } catch (e) {
+            return authorStr; // 如果解析失败，返回原始字符串
         }
-
-        // --- 技巧 B: 变成可点击的链接 ---
-        // 点击后调用 handleSearch 方法
-        return `<a href="javascript:void(0)" 
-                   onclick="myBib.handleSearch('${cleanName}'); document.getElementById('bib-search').value='${cleanName}';" 
-                   style="color: inherit; text-decoration: none; border-bottom: 1px dashed #ccc;">${displayName}</a>`;
-    });
-
-    return formattedAuthors.join(', ');
-}}
+    }
 
     async load(bibUrl) {
         try {
             this.container.innerHTML = '<div class="ui active centered inline loader"></div>';
             const response = await fetch(bibUrl);
             const bibText = await response.text();
+            
+            if (typeof bibtexParse === 'undefined') {
+                throw new Error("bibtexParse library not found.");
+            }
+
             this.rawEntries = bibtexParse.toJSON(bibText);
-            this.filteredEntries = [...this.rawEntries]; // 初始状态显示全部
+            this.filteredEntries = [...this.rawEntries];
             this.render();
         } catch (error) {
-            this.container.innerHTML = `<div class="ui negative message">Error: ${error.message}</div>`;
+            console.error("Load Error:", error);
+            this.container.innerHTML = `<div class="ui negative message">Error loading .bib file: ${error.message}</div>`;
         }
     }
 
-    // 搜索过滤函数
     handleSearch(query) {
         const q = query.toLowerCase().trim();
         if (!q) {
@@ -65,14 +71,8 @@ formatAuthors(authorStr) {
         } else {
             this.filteredEntries = this.rawEntries.filter(entry => {
                 const tags = entry.entryTags || {};
-                const textToSearch = [
-                    tags.title || '',
-                    tags.author || '',
-                    tags.bibbase_note || '',
-                    tags.journal || tags.booktitle || '',
-                    tags.keywords || '' // 如果你的bib里有keywords字段也会被搜索
-                ].join(' ').toLowerCase();
-                return textToSearch.includes(q);
+                const text = [tags.title, tags.author, tags.bibbase_note, tags.journal, tags.booktitle].join(' ').toLowerCase();
+                return text.includes(q);
             });
         }
         this.render();
@@ -84,28 +84,23 @@ formatAuthors(authorStr) {
     }
 
     render() {
-        if (!this.filteredEntries.length) {
-            this.container.innerHTML = '<div class="ui placeholder segment"><div class="ui icon header"><i class="search icon"></i>No matching publications found.</div></div>';
+        if (!this.filteredEntries || this.filteredEntries.length === 0) {
+            this.container.innerHTML = '<div class="ui segment center aligned">No entries found.</div>';
             return;
         }
 
         let groupedData = {};
-
-        // 分组逻辑
-        if (this.currentMode === 'year') {
-            this.filteredEntries.forEach(entry => {
-                const year = (entry.entryTags && entry.entryTags.year) ? entry.entryTags.year : 'Others';
-                if (!groupedData[year]) groupedData[year] = [];
-                groupedData[year].push(entry);
-            });
-        } else {
-            this.filteredEntries.forEach(entry => {
+        this.filteredEntries.forEach(entry => {
+            let groupName = 'Others';
+            if (this.currentMode === 'year') {
+                groupName = (entry.entryTags && entry.entryTags.year) ? entry.entryTags.year : 'Others';
+            } else {
                 const typeKey = entry.entryType ? entry.entryType.toLowerCase() : 'misc';
-                const typeName = this.typeMap[typeKey] || 'Others';
-                if (!groupedData[typeName]) groupedData[typeName] = [];
-                groupedData[typeName].push(entry);
-            });
-        }
+                groupName = this.typeMap[typeKey] || 'Others';
+            }
+            if (!groupedData[groupName]) groupedData[groupName] = [];
+            groupedData[groupName].push(entry);
+        });
 
         const sortedGroups = Object.keys(groupedData).sort((a, b) => {
             if (this.currentMode === 'year') return b.localeCompare(a);
@@ -113,16 +108,15 @@ formatAuthors(authorStr) {
         });
 
         let html = '<div class="ui styled fluid accordion">';
-        sortedGroups.forEach((groupName, index) => {
-            const isActive = index === 0 ? 'active' : '';
-            const items = groupedData[groupName];
+        sortedGroups.forEach((group, idx) => {
+            const isActive = idx === 0 ? 'active' : '';
             html += `
                 <div class="title ${isActive}" onclick="this.classList.toggle('active'); this.nextElementSibling.classList.toggle('active')">
-                    <i class="dropdown icon"></i> ${groupName} (${items.length})
+                    <i class="dropdown icon"></i> ${group} (${groupedData[group].length})
                 </div>
                 <div class="content ${isActive}">
                     <div class="ui divided list">
-                        ${items.map(item => this.createItemHtml(item)).join('')}
+                        ${groupedData[group].map(item => this.createItemHtml(item)).join('')}
                     </div>
                 </div>`;
         });
@@ -132,7 +126,7 @@ formatAuthors(authorStr) {
 
     createItemHtml(item) {
         const tags = item.entryTags || {};
-        const authors = this.formatAuthors(tags.author);
+        const authorsHtml = this.formatAuthors(tags.author);
         const note = tags.bibbase_note ? `<span class="bib-note-container">${tags.bibbase_note}</span>` : '';
         
         return `
@@ -142,7 +136,7 @@ formatAuthors(authorStr) {
                         ${tags.title || 'Untitled'} ${note}
                     </div>
                     <div class="description" style="margin-top: 2px; color: #444; font-size: 0.95em;">
-                        <strong>${authors}</strong>. 
+                        ${authorsHtml}. 
                         <span style="color: #666;"><em>${tags.journal || tags.booktitle || 'Preprint'}</em>, ${tags.year || ''}</span>
                     </div>
                     <div class="extra" style="margin-top: 6px;">
@@ -155,10 +149,12 @@ formatAuthors(authorStr) {
     }
 
     generateRaw(item) {
-        let raw = `@${item.entryType}{${item.citationKey},\n`;
-        for (let tag in item.entryTags) {
-            raw += `  ${tag.padEnd(12)} = {${item.entryTags[tag]}},\n`;
-        }
-        return raw + "}";
+        try {
+            let raw = `@${item.entryType}{${item.citationKey},\n`;
+            for (let tag in item.entryTags) {
+                raw += `  ${tag.padEnd(12)} = {${item.entryTags[tag]}},\n`;
+            }
+            return raw + "}";
+        } catch(e) { return "@error{}"; }
     }
 }
