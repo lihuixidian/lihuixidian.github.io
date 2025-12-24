@@ -141,6 +141,9 @@ class LocalBib {
     // 处理 bibbase_note，确保它是一个块状容器，并设置不压缩
     const note = tags.bibbase_note ? 
         `<div class="bib-note-container" style="flex-shrink: 0; margin-left: 20px; text-align: right;">${tags.bibbase_note}</div>` : '';
+       // 在 note 的 style 中加入 white-space: nowrap
+    const note = tags.bibbase_note ? 
+    `<div class="bib-note-container" style="flex-shrink: 0; margin-left: 20px; text-align: right; white-space: nowrap;">${tags.bibbase_note}</div>` : '';
     
     return `
         <div class="item" style="padding: 0.6em 0 !important;">
