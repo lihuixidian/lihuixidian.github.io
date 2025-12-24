@@ -18,32 +18,43 @@ class LocalBib {
 
     // 格式化作者：增加了转义处理，防止单引号导致崩溃
     formatAuthors(authorStr) {
-        if (!authorStr) return 'Unknown Authors';
-        try {
-            // 兼容多种分隔符
-            let authorList = authorStr.split(/ and |; |,/);
-            return authorList.map(name => {
-                let cleanName = name.trim();
-                if (!cleanName) return '';
+    if (!authorStr) return 'Unknown Authors';
+    try {
+        // 1. 先把所有换行符、回车符替换为空格，并将多个空格合并为一个
+        let cleanAuthorStr = authorStr.replace(/[\r\n]+/g, ' ').replace(/\s+/g, ' ');
 
-                // 处理名字中的单引号，防止 onclick 语法错误
-                let escapedName = cleanName.replace(/'/g, "\\'");
+        // 2. 使用更严谨的正则拆分：匹配 " and " (忽略大小写) 或分号或逗号
+        // \b 表示单词边界，确保不会误切 "Anderson" 这样的名字
+        let authorList = cleanAuthorStr.split(/\s+\b(?:and|AND|And)\b\s+|;\s*|,\s*/);
 
-                // 检查是否需要加粗自己 (请在此处修改你的名字)
-                let displayName = cleanName;
-                if (cleanName.includes("Hui Li")||cleanName.includes("Li, Hui")) { 
-                    displayName = `<strong>${cleanName}</strong>`;
-                }
+        return authorList.map(name => {
+            let cleanName = name.trim();
+            if (!cleanName) return '';
 
-                // 返回可点击的链接，注意 myBib 必须与 index.html 中的变量名一致
-                return `<a href="javascript:void(0)" 
-                           onclick="if(window.myBib) { myBib.handleSearch('${escapedName}'); document.getElementById('bib-search').value='${escapedName}'; }" 
-                           style="color: inherit; text-decoration: none; border-bottom: 1px dashed #ccc;">${displayName}</a>`;
-            }).filter(n => n !== '').join(', ');
-        } catch (e) {
-            return authorStr; // 如果解析失败，返回原始字符串
-        }
+            // 检查是否需要加粗自己 (请确保这里的字符串匹配你的名字)
+            let displayName = cleanName;
+            let targetName = "Hui Li"; // <--- 在这里修改你的名字
+            let targetName1 = "H. {Li}";
+            let targetName2 = "Li, Hui";
+            
+            // 使用精确匹配或包含匹配
+            if (cleanName.includes(targetName)||cleanName.includes(targetName1)||cleanName.includes(targetName2)) { 
+                displayName = `<strong>${cleanName}</strong>`;
+            }
+
+            // 处理单引号防止 onclick 报错
+            let escapedName = cleanName.replace(/'/g, "\\'");
+
+            // 返回点击筛选的 HTML
+            return `<a href="javascript:void(0)" 
+                       onclick="if(window.myBib) { myBib.handleSearch('${escapedName}'); document.getElementById('bib-search').value='${escapedName}'; }" 
+                       style="color: inherit; text-decoration: none; border-bottom: 1px dashed #ccc;">${displayName}</a>`;
+        }).filter(n => n !== '').join(', ');
+    } catch (e) {
+        console.error("Author formatting error:", e);
+        return authorStr;
     }
+}
 
     async load(bibUrl) {
         try {
