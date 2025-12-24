@@ -11,6 +11,7 @@
   <title>Li Hui's academic homepage</title>
   <link rel="stylesheet" type="text/css" href="semantic.css">
   <link href="malos/stylesheets/pandoc-code-highlight.css" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="bibstyle.css">
   <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/icon.min.css'>
   <script src="jquery-3.2.1.js"></script>
   <script src="semantic.min.js"></script>
@@ -20,6 +21,7 @@
   <script src="library/iframe.js"></script>
   <!-- <script src="library/replacegoogle.js"></script>-->
   <script src="components/accordion.js"></script>
+
   <style type="text/css">
     body > .ui.container {
       margin-top: 3em;
@@ -1092,8 +1094,25 @@ Weiguo Wang, Susu Yang, Longlong Sun (Ph.D since 2020), Dan Li, Li Wang, Di Yang
        <i class="book icon"></i> Publications:
       </div>
 	  </div>
+	<div id="bib-list">Fetching publication list...</div>
+	<script src="https://cdn.jsdelivr.net/gh/miketierney/bibtex-parse-js/bibtexParse.js"></script>
+    
+    <script src="LocalBib.js"></script>
+	<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // 初始化库，指定容器 ID
+            const myBib = new LocalBib('bib-list', {
+                sortBy: 'year',
+                order: 'desc'
+            });
+
+            // 加载你的 .bib 文件
+            // 注意：请确保通过 Web Server (如 Live Server) 运行，直接打开文件可能报跨域错误
+            myBib.load('lihui.bib'); 
+        });
+    </script>
 	  <!--<script src="https://bibbase.org/show?bib=lihuixidian.github.io%2Flihui.bib&commas=true&jsonp=1&theme=side"></script>-->
-	<script src="https://bibbase.org/show?bib=lihuixidian.github.io%2Flihui.bib&commas=true&jsonp=1"></script>
+	<!--<script src="https://bibbase.org/show?bib=lihuixidian.github.io%2Flihui.bib&commas=true&jsonp=1"></script>-->
       <!--<script src="https://bibbase.org/show?bib=https%3A%2F%2Flihuixidian.github.io%2Flihui.bib&jsonp=1"></script>-->
 	
 	
@@ -1159,6 +1178,7 @@ Weiguo Wang, Susu Yang, Longlong Sun (Ph.D since 2020), Dan Li, Li Wang, Di Yang
   </body>
 	
 </html>
+
 
 
 
