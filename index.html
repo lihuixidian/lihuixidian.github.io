@@ -1128,46 +1128,48 @@ Weiguo Wang, Susu Yang, Longlong Sun (Ph.D since 2020), Dan Li, Li Wang, Di Yang
        <i class="book icon"></i> Publications:
       </div>
 	  </div>
-<div class="group-controls">
-        <span style="margin-right:15px; font-weight:bold;">Group by:</span>
-        <div class="ui buttons tiny">
-            <button class="ui button active blue" id="btn-year" onclick="handleSwitch('year')">Year</button>
-            <div class="or"></div>
-            <button class="ui button" id="btn-type" onclick="handleSwitch('type')">Type</button>
+<div class="group-controls" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+        <div class="ui icon input small" style="width: 300px;">
+            <input type="text" id="bib-search" placeholder="Search title, author, or keyword..." onkeyup="handleSearchInput(this.value)">
+            <i class="search icon"></i>
+        </div>
+
+        <div>
+            <span style="margin-right:10px; font-weight:bold;">Group by:</span>
+            <div class="ui buttons tiny">
+                <button class="ui button active blue" id="btn-year" onclick="handleSwitch('year')">Year</button>
+                <div class="or"></div>
+                <button class="ui button" id="btn-type" onclick="handleSwitch('type')">Type</button>
+            </div>
         </div>
     </div>
 
-    <div id="bib-list-output"></div>
+    <div id="bib-list-output" style="margin-top: 20px;"></div>
 
 	
 	<script src="bibtexParse.js"></script>
     <script src="LocalBib.js"></script>
 	<script>
     let myBib;
-
-    // 页面加载完成后初始化
     window.onload = function() {
         myBib = new LocalBib('bib-list-output');
-        myBib.load('lihui.bib'); // 请确保你的 .bib 文件路径正确
+        myBib.load('lihui.bib');
     };
 
-    // 显式定义的切换函数
+    // 搜索回调函数
+    function handleSearchInput(val) {
+        if (myBib) myBib.handleSearch(val);
+    }
+
     function handleSwitch(mode) {
         if (!myBib) return;
-        
         myBib.setGroupMode(mode);
-        
-        // 更新按钮 UI 状态
         const yBtn = document.getElementById('btn-year');
         const tBtn = document.getElementById('btn-type');
-        
-        if (mode === 'year') {
-            yBtn.classList.add('active', 'blue');
-            tBtn.classList.remove('active', 'blue');
-        } else {
-            tBtn.classList.add('active', 'blue');
-            yBtn.classList.remove('active', 'blue');
-        }
+        yBtn.classList.toggle('active', mode === 'year');
+        yBtn.classList.toggle('blue', mode === 'year');
+        tBtn.classList.toggle('active', mode === 'type');
+        tBtn.classList.toggle('blue', mode === 'type');
     }
 </script>
 	  <!--<script src="https://bibbase.org/show?bib=lihuixidian.github.io%2Flihui.bib&commas=true&jsonp=1&theme=side"></script>-->
@@ -1237,6 +1239,7 @@ Weiguo Wang, Susu Yang, Longlong Sun (Ph.D since 2020), Dan Li, Li Wang, Di Yang
   </body>
 	
 </html>
+
 
 
 
