@@ -72,6 +72,32 @@
         margin-top: 2.5em;
         margin-bottom: 2.5em;
       }
+
+	  /* 进一步压缩按钮大小，减少占用高度 */
+.ui.mini.button {
+    padding: 0.4em 0.8em !important;
+    font-size: 0.75rem !important;
+    min-height: unset !important;
+}
+
+/* 压缩手风琴标题的内边距 */
+.ui.styled.accordion .title {
+    padding: 0.5em 1em !important;
+    background: #f9fafb !important;
+    font-size: 1.1em !important;
+}
+
+/* 压缩手风琴内容的内边距 */
+.ui.styled.accordion .content {
+    padding: 0 1.2em !important;
+}
+
+/* 修正 BibBase Note 标签在行内的位置，防止撑高行距 */
+.bib-note-container .ui.label {
+    padding: 0.3em 0.6em !important;
+    vertical-align: baseline !important;
+    margin: 0 0 0 5px !important;
+}
   </style>
 </head>
 
@@ -1211,6 +1237,7 @@ Weiguo Wang, Susu Yang, Longlong Sun (Ph.D since 2020), Dan Li, Li Wang, Di Yang
   </body>
 	
 </html>
+
 
 
 
