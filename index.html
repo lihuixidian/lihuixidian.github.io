@@ -48,16 +48,39 @@
         width: 100%;
     }
 
-    /* 保证手风琴背景色和边框始终撑满 */
-    .ui.styled.fluid.accordion { 
-        width: 100% !important;
-        box-shadow: 0 1px 2px 0 rgba(34,36,38,.15), 0 0 0 1px rgba(34,36,38,.15) !important;
+   /* ... 保持之前的 bib-main-container 和 group-controls 样式不变 ... */
+
+    /* 核心高度压缩逻辑 */
+    
+    /* 1. 压缩手风琴标题的高度 */
+    .ui.styled.accordion .title {
+        padding: 0.4em 1em !important; /* 减少年份标题的厚度 */
+        font-size: 1.1em !important;
+        min-height: unset !important;
     }
 
-    /* 移动端适配：当屏幕小于 850px 时，允许容器缩小并改为垂直排列 */
-    @media only screen and (max-width: 850px) {
-        .bib-main-container { min-width: 100%; width: 100%; }
-        .group-controls { flex-direction: column; gap: 15px; align-items: stretch; }
+    /* 2. 压缩列表内容的左右缩进和间距 */
+    .ui.styled.accordion .content {
+        padding: 0 1em 0.2em 1em !important; /* 减少内容底部留白 */
+    }
+
+    /* 3. 强制消除 list item 的默认边距 */
+    .ui.list>.item {
+        margin: 0 !important;
+        line-height: 1.2 !important;
+    }
+
+    /* 4. 让 bibbase_note 里的 Label 更加紧凑 */
+    .bib-note-container .ui.label, 
+    .ui.label {
+        padding: 0.3em 0.6em !important;
+        font-size: 0.7rem !important;
+        margin-top: -2px !important; /* 向上微调，使其与标题中心对齐 */
+    }
+
+    /* 5. 极致压缩按钮 */
+    .ui.mini.button {
+        margin-bottom: 2px !important;
     }
   </style>
 
@@ -1265,6 +1288,7 @@ Weiguo Wang, Susu Yang, Longlong Sun (Ph.D since 2020), Dan Li, Li Wang, Di Yang
   </body>
 	
 </html>
+
 
 
 
