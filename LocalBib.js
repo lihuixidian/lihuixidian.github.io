@@ -32,7 +32,8 @@ class LocalBib {
                 let targetName = "Hui Li"; // <--- 改成你的名字
                 let targetName1 = "Li, Hui";
                 let targetName2 = "H. {Li}";
-                if (cleanName.includes(targetName)||cleanName.includes(targetName1)||cleanName.includes(targetName2)) { 
+                let targetName3 = "李辉";
+                if (cleanName.includes(targetName)||cleanName.includes(targetName1)||cleanName.includes(targetName2)||cleanName.includes(targetName3)) { 
                     displayName = `<strong>${cleanName}</strong>`;
                 }
 
