@@ -28,6 +28,18 @@
         .bib-note-container { margin-left: 8px; display: inline-block; vertical-align: middle; }
         /* 修复手风琴标题的视觉效果 */
         .ui.styled.accordion .title { background: #f9fafb !important; color: #333 !important; font-weight: bold !important; }
+	  @media only screen and (max-width: 600px) {
+    /* 窄屏下允许标签换行显示 */
+		    .header {
+		        flex-direction: column !important;
+		    }
+		    .bib-note-container {
+		        margin-left: 0 !important;
+		        margin-top: 5px !important;
+		        text-align: left !important; /* 手机上改回左对齐更自然 */
+		    }
+		}
+
   </style>
 
   <style type="text/css">
@@ -93,11 +105,15 @@
 }
 
 /* 修正 BibBase Note 标签在行内的位置，防止撑高行距 */
-.bib-note-container .ui.label {
+/*.bib-note-container .ui.label {
     padding: 0.3em 0.6em !important;
     vertical-align: baseline !important;
     margin: 0 0 0 5px !important;
-}
+}	*/	
+	  /* 统一 bibbase_note 中 Semantic UI 标签的边距 */
+		.bib-note-container .ui.label {
+		    margin: 2px 0 2px 5px !important;
+		}
   </style>
 </head>
 
@@ -1235,6 +1251,7 @@ Weiguo Wang, Susu Yang, Longlong Sun (Ph.D since 2020), Dan Li, Li Wang, Di Yang
   </body>
 	
 </html>
+
 
 
 
