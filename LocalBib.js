@@ -1,103 +1,120 @@
 /**
- * LocalBib.js - Semantic UI 增强版
+ * LocalBib.js - Enhanced Version
+ * Supports: Grouping by Year/Type, Semantic UI, bibbase_note HTML, All-English.
  */
 class LocalBib {
     constructor(containerId, options = {}) {
         this.container = document.getElementById(containerId);
-        this.options = {
-            sortBy: 'year',
-            order: 'desc',
-            ...options
+        this.rawEntries = [];
+        this.currentMode = 'year'; // Default grouping mode
+        this.options = { ...options };
+        
+        // Define mapping for BibTeX types to English Categories
+        this.typeMap = {
+            'article': 'Journal Articles',
+            'inproceedings': 'Conference Papers',
+            'proceedings': 'Conference Papers',
+            'book': 'Books',
+            'phdthesis': 'Theses',
+            'mastersthesis': 'Theses',
+            'techreport': 'Technical Reports',
+            'misc': 'Preprints & Others'
         };
     }
 
     async load(bibUrl) {
         try {
-            this.container.innerHTML = '<div class="ui active centered inline loader"></div>';
+            this.container.innerHTML = '<div class="ui active centered inline loader"></div><p style="text-align:center">Loading bibliography...</p>';
             const response = await fetch(bibUrl);
             const bibText = await response.text();
             
             if (typeof bibtexParse === 'undefined') {
-                throw new Error("请先引入 bibtexParse.js");
+                throw new Error("bibtexParse.js not found. Please check your script tags.");
             }
 
-            const parsedData = bibtexParse.toJSON(bibText);
-            this.render(parsedData);
+            this.rawEntries = bibtexParse.toJSON(bibText);
+            this.render(); // Initial render
         } catch (error) {
-            this.container.innerHTML = `<div class="ui negative message"><div class="header">加载失败</div><p>${error.message}</p></div>`;
+            this.container.innerHTML = `<div class="ui negative message"><div class="header">Loading Error</div><p>${error.message}</p></div>`;
         }
     }
 
-    // 处理作者格式
-    formatAuthors(authorStr) {
-        if (!authorStr) return 'Unknown Author';
-        return authorStr.replace(/ and /g, ', ');
+    // Switch between 'year' and 'type'
+    setGroupMode(mode) {
+        this.currentMode = mode;
+        this.render();
     }
 
-    // 核心渲染逻辑
-    render(data) {
-        // 1. 排序
-        data.sort((a, b) => {
-            const valA = parseInt(a.entryTags[this.options.sortBy]) || 0;
-            const valB = parseInt(b.entryTags[this.options.sortBy]) || 0;
-            return this.options.order === 'desc' ? valB - valA : valA - valB;
-        });
+    render() {
+        if (!this.rawEntries.length) return;
 
-        // 2. 分组构建 HTML
+        let groupedData = {};
+        
+        // 1. Grouping Logic
+        if (this.currentMode === 'year') {
+            // Sort by year descending
+            this.rawEntries.sort((a, b) => (parseInt(b.entryTags.year) || 0) - (parseInt(a.entryTags.year) || 0));
+            this.rawEntries.forEach(entry => {
+                const year = entry.entryTags.year || 'Other';
+                if (!groupedData[year]) groupedData[year] = [];
+                groupedData[year].push(entry);
+            });
+        } else {
+            // Group by Type
+            this.rawEntries.forEach(entry => {
+                const type = this.typeMap[entry.entryType.toLowerCase()] || 'Other';
+                if (!groupedData[type]) groupedData[type] = [];
+                groupedData[type].push(entry);
+            });
+        }
+
+        // 2. Build HTML Structure
         let html = '<div class="ui styled fluid accordion bib-accordion">';
-        let currentYear = '';
-
-        data.forEach((item, index) => {
-            const tags = item.entryTags;
-            const year = tags.year || 'Other';
-
-            // 当年份变换时，开启新的手风琴面板
-            if (year !== currentYear) {
-                if (currentYear !== '') html += '</div></div>'; // 关闭上一个面板内容
-                currentYear = year;
-                
-                // 默认展开第一个年份 (active 状态)
-                const isActive = index === 0 ? 'active' : '';
-                html += `
-                    <div class="title ${isActive} bib-year-title" onclick="this.classList.toggle('active'); this.nextElementSibling.classList.toggle('active')">
-                        <i class="dropdown icon"></i>
-                        ${currentYear} 年论文
-                    </div>
-                    <div class="content ${isActive} bib-year-content">
-                `;
-            }
-
-            // 处理 bibbase_note 逻辑：直接输出 HTML
-            const noteHtml = tags.bibbase_note ? `<div class="bib-note">${tags.bibbase_note}</div>` : '';
-
+        
+        Object.keys(groupedData).forEach((groupName, index) => {
+            const isActive = index === 0 ? 'active' : ''; // Open the first group by default
+            
             html += `
-                <div class="ui vertical segment bib-item">
-                    <div class="bib-main-info">
-                        <span class="ui header small bib-title" style="margin-right:10px">${tags.title || 'Untitled'}</span>
-                        ${noteHtml} 
-                    </div>
-                    <div class="bib-meta" style="color: rgba(0,0,0,.6); font-size: 0.95em; margin-top:5px;">
-                        <span class="ui author"><strong>${this.formatAuthors(tags.author)}</strong></span>. 
-                        <span class="ui venue"><em>${tags.journal || tags.booktitle || 'Preprint'}</em>, ${year}.</span>
-                    </div>
-                    <div class="bib-actions" style="margin-top:8px;">
-                        ${tags.url ? `<a class="ui mini basic button" href="${tags.url}" target="_blank">PDF</a>` : ''}
-                        <button class="ui mini basic button" onclick="this.nextElementSibling.classList.toggle('show')">BibTeX</button>
-                        <pre class="bib-raw-code" style="display:none; background:#f3f4f5; padding:10px; margin-top:10px; font-size:11px;">${this.generateRaw(item)}</pre>
+                <div class="title ${isActive}" onclick="this.classList.toggle('active'); this.nextElementSibling.classList.toggle('active')">
+                    <i class="dropdown icon"></i>
+                    ${groupName} (${groupedData[groupName].length})
+                </div>
+                <div class="content ${isActive}">
+                    <div class="ui list">
+                        ${groupedData[groupName].map(item => this.createItemHtml(item)).join('')}
                     </div>
                 </div>
             `;
         });
 
-        html += '</div></div>'; // 关闭最后的容器
+        html += '</div>';
         this.container.innerHTML = html;
+    }
+
+    createItemHtml(item) {
+        const tags = item.entryTags;
+        const authors = tags.author ? tags.author.replace(/ and /g, ', ') : 'Unknown';
+        const note = tags.bibbase_note ? `<div class="bib-note">${tags.bibbase_note}</div>` : '';
+        
+        return `
+            <div class="item bib-entry-item" style="padding: 1em 0; border-bottom: 1px solid #eee;">
+                <div class="content">
+                    <div class="header" style="font-size: 1.1em; color: #1a73e8; display:inline;">${tags.title || 'Untitled'}</div>
+                    ${note}
+                    <div class="description" style="margin-top: 5px; color: #555;">
+                        <strong>${authors}</strong>. 
+                        <i>${tags.journal || tags.booktitle || 'Preprint'}</i>, ${tags.year || ''}.
+                    </div>
+                    <div class="extra" style="margin-top: 8px;">
+                        ${tags.url ? `<a class="ui mini basic blue button" href="${tags.url}" target="_blank">PDF</a>` : ''}
+                        <button class="ui mini basic gray button" onclick="this.nextElementSibling.classList.toggle('show')">BibTeX</button>
+                        <pre class="bib-raw-code" style="display:none; background:#f9f9f9; padding:10px; margin-top:10px; font-size:11px; border-left: 3px solid #ccc;">${this.generateRaw(item)}</pre>
+                    </div>
+                </div>
+            </div>
+        `;
     }
 
     generateRaw(item) {
         let raw = `@${item.entryType}{${item.citationKey},\n`;
-        for (let tag in item.entryTags) {
-            raw += `  ${tag} = {${item.entryTags[tag]}},\n`;
-        }
-        return raw + "}";
-    }
-}
+        for (let tag in item.entryTags)
