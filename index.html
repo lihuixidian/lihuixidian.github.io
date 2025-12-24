@@ -21,15 +21,14 @@
   <script src="library/iframe.js"></script>
   <!-- <script src="library/replacegoogle.js"></script>-->
   <script src="components/accordion.js"></script>
-	  <style>
-        body { padding: 30px; background-color: #fdfdfd; }
-        .bib-container { max-width: 1000px; margin: 0 auto; }
-        .bib-note { display: inline-block; margin-left: 10px; vertical-align: middle; }
-        .bib-raw-code.show { display: block !important; }
-        .group-switcher { margin-bottom: 20px; text-align: right; }
-        /* Style for the accordion titles to make them look more like BibBase */
-        .ui.accordion .title { background: #f3f4f5 !important; font-size: 1.2em !important; border-top: 1px solid #ddd !important; }
-    </style>
+  <style>
+        body { padding: 40px; background: #fafafa; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        .bib-main-container { max-width: 900px; margin: 0 auto; }
+        .group-controls { margin-bottom: 25px; display: flex; align-items: center; justify-content: flex-end; }
+        .bib-note-container { margin-left: 8px; display: inline-block; vertical-align: middle; }
+        /* 修复手风琴标题的视觉效果 */
+        .ui.styled.accordion .title { background: #f9fafb !important; color: #333 !important; font-weight: bold !important; }
+  </style>
 
   <style type="text/css">
     body > .ui.container {
@@ -1103,38 +1102,48 @@ Weiguo Wang, Susu Yang, Longlong Sun (Ph.D since 2020), Dan Li, Li Wang, Di Yang
        <i class="book icon"></i> Publications:
       </div>
 	  </div>
-	<div class="group-switcher">
-        <span style="margin-right: 10px; font-weight: bold;">Group by:</span>
-        <div class="ui tiny buttons">
-            <button class="ui button active blue" id="btn-year" onclick="switchMode('year')">Year</button>
+<div class="group-controls">
+        <span style="margin-right:15px; font-weight:bold;">Group by:</span>
+        <div class="ui buttons tiny">
+            <button class="ui button active blue" id="btn-year" onclick="handleSwitch('year')">Year</button>
             <div class="or"></div>
-            <button class="ui button" id="btn-type" onclick="switchMode('type')">Type</button>
+            <button class="ui button" id="btn-type" onclick="handleSwitch('type')">Type</button>
         </div>
     </div>
 
-    <div id="bib-list"></div>
+    <div id="bib-list-output"></div>
+
 	
 	<script src="bibtexParse.js"></script>
     <script src="LocalBib.js"></script>
 	<script>
-        let myBib;
+    let myBib;
 
-    document.addEventListener('DOMContentLoaded', () => {
-        myBib = new LocalBib('bib-list');
-        myBib.load('lihui.bib');
-    });
+    // 页面加载完成后初始化
+    window.onload = function() {
+        myBib = new LocalBib('bib-list-output');
+        myBib.load('lihui.bib'); // 请确保你的 .bib 文件路径正确
+    };
 
-    // Handle UI button switching
-    function switchMode(mode) {
+    // 显式定义的切换函数
+    function handleSwitch(mode) {
+        if (!myBib) return;
+        
         myBib.setGroupMode(mode);
         
-        // Update button active state
-        document.getElementById('btn-year').classList.toggle('active', mode === 'year');
-        document.getElementById('btn-year').classList.toggle('blue', mode === 'year');
-        document.getElementById('btn-type').classList.toggle('active', mode === 'type');
-        document.getElementById('btn-type').classList.toggle('blue', mode === 'type');
+        // 更新按钮 UI 状态
+        const yBtn = document.getElementById('btn-year');
+        const tBtn = document.getElementById('btn-type');
+        
+        if (mode === 'year') {
+            yBtn.classList.add('active', 'blue');
+            tBtn.classList.remove('active', 'blue');
+        } else {
+            tBtn.classList.add('active', 'blue');
+            yBtn.classList.remove('active', 'blue');
+        }
     }
-    </script>
+</script>
 	  <!--<script src="https://bibbase.org/show?bib=lihuixidian.github.io%2Flihui.bib&commas=true&jsonp=1&theme=side"></script>-->
 	<!--<script src="https://bibbase.org/show?bib=lihuixidian.github.io%2Flihui.bib&commas=true&jsonp=1"></script>-->
       <!--<script src="https://bibbase.org/show?bib=https%3A%2F%2Flihuixidian.github.io%2Flihui.bib&jsonp=1"></script>-->
@@ -1202,6 +1211,7 @@ Weiguo Wang, Susu Yang, Longlong Sun (Ph.D since 2020), Dan Li, Li Wang, Di Yang
   </body>
 	
 </html>
+
 
 
 
