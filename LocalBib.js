@@ -74,40 +74,40 @@ class LocalBib {
     }
 
     render() {
-        if (!this.filteredEntries.length) {
-            this.container.innerHTML = '<div class="ui segment center aligned">No matching entries found.</div>';
-            return;
-        }
-
-        let groupedData = {};
-        this.filteredEntries.forEach(entry => {
-            let groupName = (this.currentMode === 'year') ? 
-                (entry.entryTags.year || 'Others') : 
-                (this.typeMap[entry.entryType.toLowerCase()] || 'Others');
-            if (!groupedData[groupName]) groupedData[groupName] = [];
-            groupedData[groupName].push(entry);
-        });
-
-        const sortedGroups = Object.keys(groupedData).sort((a, b) => 
-            (this.currentMode === 'year') ? b.localeCompare(a) : a.localeCompare(b)
-        );
-
-        let html = '<div class="ui styled fluid accordion">';
-        sortedGroups.forEach((group, idx) => {
-            const isActive = idx === 0 ? 'active' : '';
-            html += `
-                <div class="title ${isActive}" onclick="this.classList.toggle('active'); this.nextElementSibling.classList.toggle('active')">
-                    <i class="dropdown icon"></i> ${group} (${groupedData[group].length})
-                </div>
-                <div class="content ${isActive}">
-                    <div class="ui divided list">
-                        ${groupedData[group].map(item => this.createItemHtml(item)).join('')}
-                    </div>
-                </div>`;
-        });
-        this.container.innerHTML = html + '</div>';
+    if (!this.filteredEntries.length) {
+        this.container.innerHTML = '<div class="ui segment center aligned">No matching entries found.</div>';
+        return;
     }
 
+    let groupedData = {};
+    this.filteredEntries.forEach(entry => {
+        let groupName = (this.currentMode === 'year') ? 
+            (entry.entryTags.year || 'Others') : 
+            (this.typeMap[entry.entryType.toLowerCase()] || 'Others');
+        if (!groupedData[groupName]) groupedData[groupName] = [];
+        groupedData[groupName].push(entry);
+    });
+
+    const sortedGroups = Object.keys(groupedData).sort((a, b) => 
+        (this.currentMode === 'year') ? b.localeCompare(a) : a.localeCompare(b)
+    );
+
+    // 渲染手风琴
+    let html = '<div class="ui styled fluid accordion">';
+    sortedGroups.forEach((group) => {
+        // 核心修改：移除 index 判断，直接为所有板块添加 'active' 类名
+        html += `
+            <div class="title active" onclick="this.classList.toggle('active'); this.nextElementSibling.classList.toggle('active')">
+                <i class="dropdown icon"></i> ${group} (${groupedData[group].length})
+            </div>
+            <div class="content active">
+                <div class="ui divided list">
+                    ${groupedData[group].map(item => this.createItemHtml(item)).join('')}
+                </div>
+            </div>`;
+    });
+    this.container.innerHTML = html + '</div>';
+}
     createItemHtml(item) {
         const tags = item.entryTags || {};
         const authorsHtml = this.formatAuthors(tags.author);
