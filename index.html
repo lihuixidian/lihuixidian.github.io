@@ -23,11 +23,34 @@
   <script src="components/accordion.js"></script>
   <style>
         body { padding: 40px; background: #fafafa; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        .bib-main-container { max-width: 900px; margin: 0 auto; }
+        /* .bib-main-container { max-width: 900px; margin: 0 auto; }*/
         .group-controls { margin-bottom: 25px; display: flex; align-items: center; justify-content: flex-end; }
         .bib-note-container { margin-left: 8px; display: inline-block; vertical-align: middle; }
         /* 修复手风琴标题的视觉效果 */
         .ui.styled.accordion .title { background: #f9fafb !important; color: #333 !important; font-weight: bold !important; }
+	  /* 修改主容器样式 */
+		.bib-main-container {
+		    max-width: 900px;  /* 最大宽度保持不变 */
+		    width: 95%;        /* 在小屏幕上占据 95% */
+		    margin: 0 auto;    /* 居中 */
+		    
+		    /* 核心修复：设置最小宽度，防止折叠时收窄 */
+		    /* 建议设置为 600px 到 800px 之间，视你的布局而定 */
+		    min-width: 700px;  
+		}
+		
+		/* 确保手风琴始终撑满父容器 */
+		.ui.styled.accordion {
+		    width: 100% !important;
+		}
+		
+		/* 针对移动端（小屏幕）的适配，防止 min-width 溢出屏幕 */
+		@media only screen and (max-width: 768px) {
+		    .bib-main-container {
+		        min-width: unset; /* 手机端取消最小宽度限制 */
+		        width: 100%;
+		    }
+		}
 	  /* @media only screen and (max-width: 600px) {
     /* 窄屏下允许标签换行显示 */
 		  /*    .header {
@@ -1251,6 +1274,7 @@ Weiguo Wang, Susu Yang, Longlong Sun (Ph.D since 2020), Dan Li, Li Wang, Di Yang
   </body>
 	
 </html>
+
 
 
 
