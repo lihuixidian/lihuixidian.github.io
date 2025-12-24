@@ -17,13 +17,32 @@ class LocalBib {
     }
 
     // 格式化作者的方法：你可以在这里加粗自己的名字
-    formatAuthors(authorStr) {
-        if (!authorStr) return 'Unknown Authors';
-        let authors = authorStr.replace(/ and /g, ', ');
-        // 示例：加粗你自己
-        authors = authors.replace('Hui Li', '<strong>Hui Li</strong>');
-        return authors;
-    }
+formatAuthors(authorStr) {
+    if (!authorStr) return 'Unknown Authors';
+    
+    // 1. 将 "and" 替换为逗号并拆分为数组
+    let authorList = authorStr.split(/ and |, /);
+    
+    // 2. 处理每个作者
+    let formattedAuthors = authorList.map(name => {
+        let cleanName = name.trim();
+        
+        // --- 技巧 A: 加粗你自己的名字 ---
+        // 替换为你论文中使用的名字
+        let displayName = cleanName;
+        if (cleanName.includes("Hui Li") || cleanName.includes("Li, Hui")) {
+            displayName = `<strong>${cleanName}</strong>`;
+        }
+
+        // --- 技巧 B: 变成可点击的链接 ---
+        // 点击后调用 handleSearch 方法
+        return `<a href="javascript:void(0)" 
+                   onclick="myBib.handleSearch('${cleanName}'); document.getElementById('bib-search').value='${cleanName}';" 
+                   style="color: inherit; text-decoration: none; border-bottom: 1px dashed #ccc;">${displayName}</a>`;
+    });
+
+    return formattedAuthors.join(', ');
+}}
 
     async load(bibUrl) {
         try {
