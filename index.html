@@ -50,37 +50,43 @@
 
    /* ... 保持之前的 bib-main-container 和 group-controls 样式不变 ... */
 
-    /* 核心高度压缩逻辑 */
-    
-    /* 1. 压缩手风琴标题的高度 */
+   /* 1. 极致压缩手风琴容器 */
+    .ui.styled.accordion {
+        box-shadow: none !important;
+        border: 1px solid #eee !important;
+    }
+
+    /* 2. 压缩年份标题行 */
     .ui.styled.accordion .title {
-        padding: 0.4em 1em !important; /* 减少年份标题的厚度 */
-        font-size: 1.1em !important;
+        padding: 2px 10px !important; /* 极窄的年份条 */
+        background: #f1f1f1 !important;
+        font-size: 0.95em !important;
         min-height: unset !important;
+        border-top: 1px solid #ddd !important;
     }
 
-    /* 2. 压缩列表内容的左右缩进和间距 */
+    /* 3. 移除内容区域的内边距 */
     .ui.styled.accordion .content {
-        padding: 0 1em 0.2em 1em !important; /* 减少内容底部留白 */
+        padding: 2px 10px !important;
     }
 
-    /* 3. 强制消除 list item 的默认边距 */
+    /* 4. 列表项间距清零 */
     .ui.list>.item {
-        margin: 0 !important;
-        line-height: 1.2 !important;
+        border-bottom: 1px solid #fafafa !important;
+        padding: 2px 0 !important;
     }
 
-    /* 4. 让 bibbase_note 里的 Label 更加紧凑 */
+    /* 5. 缩放 bibbase_note 里的标签大小 */
     .bib-note-container .ui.label, 
     .ui.label {
-        padding: 0.3em 0.6em !important;
-        font-size: 0.7rem !important;
-        margin-top: -2px !important; /* 向上微调，使其与标题中心对齐 */
+        padding: 0.2em 0.5em !important;
+        font-size: 0.65rem !important;
+        border-radius: 2px !important;
     }
 
-    /* 5. 极致压缩按钮 */
-    .ui.mini.button {
-        margin-bottom: 2px !important;
+    /* 6. 搜索栏微调 */
+    .ui.input.small input {
+        padding: 0.5em 1em !important;
     }
   </style>
 
@@ -1288,6 +1294,7 @@ Weiguo Wang, Susu Yang, Longlong Sun (Ph.D since 2020), Dan Li, Li Wang, Di Yang
   </body>
 	
 </html>
+
 
 
 
