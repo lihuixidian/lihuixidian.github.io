@@ -21,7 +21,7 @@ class LocalBib {
         if (!authorStr) return 'Unknown Authors';
         let authors = authorStr.replace(/ and /g, ', ');
         // 示例：加粗你自己
-        // authors = authors.replace('Your Name', '<strong>Your Name</strong>');
+        authors = authors.replace('Hui Li', '<strong>Hui Li</strong>');
         return authors;
     }
 
