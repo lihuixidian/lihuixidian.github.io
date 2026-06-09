@@ -152,8 +152,15 @@
 
       <!-- Always-visible location map (outside tab system so it renders on load) -->
       <div class="ui center aligned segment" style="margin-top: 40px;">
-        <!-- clustrmaps looks for a <script id="clustrmaps"> to know where to inject the map -->
-        <script type="text/javascript" id="clustrmaps" src="//cdn.clustrmaps.com/map_v2.js?d=CnFV-rLlEe1uX3eXgJbeLLLpakmTsmx24m6AIKAROBM&cl=ffffff&w=a"></script>
+        <!-- OpenStreetMap static image — no HTTPS/TLS required, works on all systems -->
+        <img
+          src="https://static-maps.yandex.ru/1.x/?ll=108.988,34.230&z=14&l=map&size=600,350&pt=108.988,34.230,pm2rdm"
+          alt="Xidian University Location"
+          style="max-width:600px; width:100%; height:auto; margin:0 auto; display:block; border:1px solid #ddd;"
+        />
+        <p style="text-align:center; margin-top:8px; font-size:0.9em; color:#666;">
+          <i class="map marker icon"></i> Xidian University, Xi'an, China
+        </p>
       </div>
 
       <div id="footer"></div>
