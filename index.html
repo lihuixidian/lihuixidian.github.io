@@ -46,20 +46,6 @@
       box-shadow: 0 1px 2px 0 rgba(34,36,38,.15), 0 0 0 1px rgba(34,36,38,.15) !important;
     }
 
-    /* Tab sections — all hidden by default except active one */
-    .tab-section {
-      display: none;
-    }
-    .tab-section.active {
-      display: block;
-    }
-
-    /* Nav active state */
-    .nav-tab.active {
-      background: rgba(255,255,255,0.1) !important;
-      font-weight: bold;
-    }
-
     @media only screen and (max-width: 850px) {
       .bib-main-container { min-width: 100%; width: 100%; }
       .group-controls { flex-direction: column; gap: 15px; align-items: stretch; }
@@ -115,16 +101,16 @@
     <!-- Navigation Bar -->
     <div class="ui inverted fixed menu">
       <div class="ui container">
-        <a class="ui item nav-tab active" href="#" data-tab="about">About</a>
-        <a class="ui item nav-tab" href="#" data-tab="news">News</a>
-        <a class="ui item nav-tab" href="#" data-tab="work">Research Grants</a>
-        <a class="ui item nav-tab" href="#" data-tab="project">Projects</a>
-        <a class="ui item nav-tab" href="#" data-tab="award">Awards</a>
-        <a class="ui item nav-tab" href="#" data-tab="service">Services</a>
-        <a class="ui item nav-tab" href="#" data-tab="teach">Teaching</a>
-        <a class="ui item nav-tab" href="#" data-tab="students">Students</a>
-        <a class="ui item nav-tab" href="#" data-tab="publications">Publications</a>
-        <a class="ui item nav-tab" href="#" data-tab="contact">Contact</a>
+        <a class="ui item" href="#about">About</a>
+        <a class="ui item" href="#news">News</a>
+        <a class="ui item" href="#work">Research Grants</a>
+        <a class="ui item" href="#project">Projects</a>
+        <a class="ui item" href="#award">Awards</a>
+        <a class="ui item" href="#service">Services</a>
+        <a class="ui item" href="#teach">Teaching</a>
+        <a class="ui item" href="#students">Students</a>
+        <a class="ui item" href="#publications">Publications</a>
+        <a class="ui item" href="#contact">Contact</a>
       </div>
     </div>
 
@@ -135,17 +121,17 @@
     <div class="ui container">
       <div class="bib-main-container">
 
-        <!-- Tab Sections (loaded via AJAX) -->
-        <div id="sec-about"    class="tab-section active"></div>
-        <div id="sec-news"     class="tab-section"></div>
-        <div id="sec-work"     class="tab-section"></div>
-        <div id="sec-project"  class="tab-section"></div>
-        <div id="sec-award"    class="tab-section"></div>
-        <div id="sec-service"  class="tab-section"></div>
-        <div id="sec-teach"     class="tab-section"></div>
-        <div id="sec-students"  class="tab-section"></div>
-        <div id="sec-publications" class="tab-section"></div>
-        <div id="sec-contact"   class="tab-section"></div>
+        <!-- Sections (all visible at once, loaded via AJAX) -->
+        <div id="about"></div>
+        <div id="news"></div>
+        <div id="work"></div>
+        <div id="project"></div>
+        <div id="award"></div>
+        <div id="service"></div>
+        <div id="teach"></div>
+        <div id="students"></div>
+        <div id="publications"></div>
+        <div id="contact"></div>
 
         <div id="push"></div>
       </div>
@@ -153,38 +139,32 @@
       <div id="footer"></div>
     </div>
 
-    <!-- Load tab content files, then initialize UI -->
+    <!-- Load all section content files, then initialize accordion -->
     <script>
       jq200(document).ready(function() {
-        // Load all tab content in parallel
-        jq200('#sec-about').load('tabs/about.html');
-        jq200('#sec-news').load('tabs/news.html');
-        jq200('#sec-work').load('tabs/work.html');
-        jq200('#sec-project').load('tabs/project.html');
-        jq200('#sec-award').load('tabs/award.html');
-        jq200('#sec-service').load('tabs/service.html');
-        jq200('#sec-teach').load('tabs/teach.html');
-        jq200('#sec-students').load('tabs/students.html');
-        jq200('#sec-publications').load('tabs/publications.html');
-        jq200('#sec-contact').load('tabs/contact.html', function() {
+        jq200('#about').load('tabs/about.html');
+        jq200('#news').load('tabs/news.html');
+        jq200('#work').load('tabs/work.html');
+        jq200('#project').load('tabs/project.html');
+        jq200('#award').load('tabs/award.html');
+        jq200('#service').load('tabs/service.html');
+        jq200('#teach').load('tabs/teach.html');
+        jq200('#students').load('tabs/students.html');
+        jq200('#publications').load('tabs/publications.html');
+        jq200('#contact').load('tabs/contact.html', function() {
           jq200('.ui.accordion').accordion({duration: 'click'});
         });
 
-        // Tab switching logic
-        jq200('.nav-tab').on('click', function(e) {
-          e.preventDefault();
-          var tab = jq200(this).data('tab');
-
-          // Switch active nav item
-          jq200('.nav-tab').removeClass('active');
-          jq200(this).addClass('active');
-
-          // Show corresponding section
-          jq200('.tab-section').removeClass('active');
-          jq200('#sec-' + tab).addClass('active');
-
-          // Scroll to top
-          jq200('html, body').animate({ scrollTop: 0 }, 300);
+        // Smooth scroll when clicking nav links
+        jq200('a[href^="#"]').on('click', function(e) {
+          var targetId = jq200(this).attr('href');
+          var target = jq200(targetId);
+          if (target.length) {
+            e.preventDefault();
+            jq200('html, body').animate({
+              scrollTop: target.offset().top - 70
+            }, 400);
+          }
         });
       });
     </script>
