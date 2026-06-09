@@ -150,6 +150,20 @@
         <div id="push"></div>
       </div>
 
+      <!-- Always-visible location map (outside tab system so it renders on load) -->
+      <div class="ui center aligned segment" style="margin-top: 40px;">
+        <div id="clustrmaps-widget" style="display:inline-block; max-width: 600px; width: 100%;"></div>
+        <script type="text/javascript">
+          (function() {
+            var script = document.createElement('script');
+            script.type = 'text/javascript';
+            script.src = '//cdn.clustrmaps.com/map_v2.js?d=CnFV-rLlEe1uX3eXgJbeLLLpakmTsmx24m6AIKAROBM&cl=ffffff&w=a';
+            script.setAttribute('id', 'clustrmaps-widget-script');
+            document.getElementById('clustrmaps-widget').appendChild(script);
+          })();
+        </script>
+      </div>
+
       <div id="footer"></div>
     </div>
 
@@ -182,19 +196,6 @@
           // Show corresponding section
           jq200('.tab-section').removeClass('active');
           jq200('#sec-' + tab).addClass('active');
-
-          // Re-trigger clustrmaps when switching to contact tab
-          // (clustrmaps needs container to be visible to measure dimensions)
-          if (tab === 'contact') {
-            var mapContainer = jq200('#sec-contact');
-            var existing = mapContainer.find('#clustrmaps-script');
-            if (existing.length) existing.remove();
-            var script = document.createElement('script');
-            script.id = 'clustrmaps-script';
-            script.type = 'text/javascript';
-            script.src = '//cdn.clustrmaps.com/map_v2.js?d=CnFV-rLlEe1uX3eXgJbeLLLpakmTsmx24m6AIKAROBM&cl=ffffff&w=a';
-            mapContainer.find('.six.wide.column').append(script);
-          }
 
           // Scroll to top
           jq200('html, body').animate({ scrollTop: 0 }, 300);
