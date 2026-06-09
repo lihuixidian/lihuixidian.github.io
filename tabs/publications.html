@@ -1,0 +1,42 @@
+<!-- Publications Tab -->
+<div class="ui block header">
+      <div id="workshop" class="header">
+       <i class="book icon"></i> Publications:
+      </div>
+    </div>
+<div class="group-controls" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+        <div class="ui icon input small" style="width: 300px;">
+            <input type="text" id="bib-search" placeholder="Search title, author, or keyword..." onkeyup="handleSearchInput(this.value)">
+            <i class="search icon"></i>
+        </div>
+
+<div>
+            <span style="margin-right:10px; font-weight:bold;">Group by:</span>
+            <div class="ui buttons tiny">
+                <button class="ui button active blue" id="btn-year" onclick="handleSwitch('year')">Year</button>
+                <div class="or"></div>
+                <button class="ui button" id="btn-type" onclick="handleSwitch('type')">Type</button>
+            </div>
+        </div>
+</div>
+
+    <div id="bib-list-output" style="margin-top: 20px;"></div>
+  <script src="bibtexParse.js"></script>
+    <script src="LocalBib.js"></script>
+  <script>
+  window.myBib = null;
+  
+      window.onload = function() {
+          window.myBib = new LocalBib('bib-list-output');
+          window.myBib.load('lihui.bib');
+      };
+  
+      function handleSearchInput(val) {
+          if (window.myBib) window.myBib.handleSearch(val);
+      }
+  
+      function handleSwitch(mode) {
+          if (!window.myBib) return;
+          window.myBib.setGroupMode(mode);
+      }
+</script>
