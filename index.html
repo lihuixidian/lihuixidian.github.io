@@ -130,7 +130,28 @@
         <div id="service"></div>
         <div id="teach"></div>
         <div id="students"></div>
-        <div id="publications"></div>
+        <div id="publications">
+          <div class="ui block header">
+            <div id="workshop" class="header">
+              <i class="book icon"></i> Publications:
+            </div>
+          </div>
+          <div class="group-controls" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+            <div class="ui icon input small" style="width: 300px;">
+              <input type="text" id="bib-search" placeholder="Search title, author, or keyword..." onkeyup="handleSearchInput(this.value)">
+              <i class="search icon"></i>
+            </div>
+            <div>
+              <span style="margin-right:10px; font-weight:bold;">Group by:</span>
+              <div class="ui buttons tiny">
+                <button class="ui button active blue" id="btn-year" onclick="handleSwitch('year')">Year</button>
+                <div class="or"></div>
+                <button class="ui button" id="btn-type" onclick="handleSwitch('type')">Type</button>
+              </div>
+            </div>
+          </div>
+          <div id="bib-list-output" style="margin-top: 20px;"></div>
+        </div>
         <div id="contact"></div>
 
         <div id="push"></div>
@@ -139,8 +160,12 @@
       <div id="footer"></div>
     </div>
 
-    <!-- Load all section content files, then initialize accordion -->
+    <!-- Load all section content files, then initialize accordion and bib -->
+    <script src="bibtexParse.js"></script>
+    <script src="LocalBib.js"></script>
     <script>
+      var myBib = null;
+
       jq200(document).ready(function() {
         jq200('#about').load('tabs/about.html');
         jq200('#news').load('tabs/news.html');
@@ -150,10 +175,13 @@
         jq200('#service').load('tabs/service.html');
         jq200('#teach').load('tabs/teach.html');
         jq200('#students').load('tabs/students.html');
-        jq200('#publications').load('tabs/publications.html');
         jq200('#contact').load('tabs/contact.html', function() {
           jq200('.ui.accordion').accordion({duration: 'click'});
         });
+
+        // Init bib after all AJAX content is loaded
+        myBib = new LocalBib('bib-list-output');
+        myBib.load('lihui.bib');
 
         // Smooth scroll when clicking nav links
         jq200('a[href^="#"]').on('click', function(e) {
@@ -167,6 +195,15 @@
           }
         });
       });
+
+      function handleSearchInput(val) {
+        if (myBib) myBib.handleSearch(val);
+      }
+
+      function handleSwitch(mode) {
+        if (!myBib) return;
+        myBib.setGroupMode(mode);
+      }
     </script>
   </body>
 </html>
