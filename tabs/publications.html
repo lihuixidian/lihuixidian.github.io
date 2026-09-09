@@ -41,10 +41,10 @@
 </div>
 
 <!--
-  Inline bib snapshot. On file:// (or any context where fetch() is blocked),
-  LocalBib falls back to this block. To refresh after editing lihui.bib,
-  run:   python bin/sync-bib.py
-  (or:    powershell -ExecutionPolicy Bypass -File bin\sync-bib.ps1)
+  Inline bib snapshot. Used as a fallback when fetch() is blocked (e.g.
+  the page is opened via file://). On the deployed site (https://),
+  the upstream lihui.bib is fetched directly and this block is ignored,
+  so editing lihui.bib and pushing is enough — no sync step required.
 -->
 <script type="text/x-bib" id="bib-source">
 @inproceedings{FAST27,
