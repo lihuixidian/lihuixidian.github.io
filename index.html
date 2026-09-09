@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Li Hui — Database Systems (lihuidb.com)</title>
+  <meta name="description" content="Hui Li (李辉), Professor at Xidian University. Database systems, query optimization, SQL/MM, data privacy, education.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 16 16%22><text y=%2214%22 font-size=%2214%22>%24_</text></svg>">
+</head>
+<body>
+
+<!-- ========== TOP BAR ========== -->
+<header class="topbar">
+  <div class="topbar-left">
+    <span class="prompt">$</span> <span class="wordmark">cat</span> <span class="path">lihui.db</span><span class="cursor">_</span>
+  </div>
+  <nav class="topbar-nav" aria-label="Section navigation">
+    <a href="#about">/about</a>
+    <a href="#news">/news</a>
+    <a href="#work">/grants</a>
+    <a href="#project">/projects</a>
+    <a href="#award">/awards</a>
+    <a href="#service">/service</a>
+    <a href="#teach">/teach</a>
+    <a href="#students">/students</a>
+    <a href="#publications">/papers</a>
+    <a href="#contact">/contact</a>
+  </nav>
+</header>
+
+<!-- ========== MAIN ========== -->
+<main>
+
+  <div class="crt-line">
+    <span class="arrow">→</span>
+    <span>loading profile <span class="dots">...</span> <span class="ok">[ok]</span></span>
+  </div>
+
+  <section class="hero" id="top">
+    <div class="id-line">
+      <span class="green">$</span> whoami <span class="orange">//</span> database systems · sql/mm · cardinality estimation
+    </div>
+    <h1 class="name">Li_Hui<span class="underscore">_</span></h1>
+    <p class="tagline">
+      <span class="green">//</span> name: 李辉 (Hui Li) <span class="green">//</span> role: <span class="amber">professor</span>
+    </p>
+    <p class="tagline">
+      <span class="green">//</span> school: <a href="http://www.xidian.edu.cn" target="_blank" rel="noopener">Xidian University</a>
+      <span class="green">//</span> lab: <a href="https://dbedu.tech" target="_blank" rel="noopener" target="_blank" rel="noopener"><img src="images/dbedu.png" alt="DBEDU" style="height:1.5em; vertical-align:-3px; border-radius:2px;"></a> (库道)
+    </p>
+  </section>
+
+  <!--
+    Each section is an <iframe> pointing at the corresponding tabs/*.html
+    fragment. Iframes work on both http:// and file:// (where fetch() is
+    blocked). Each iframe loads assets/iframe-resize.js, which posts a
+    message to the parent whenever the iframe's height changes, so the
+    iframe is sized exactly to its content.
+  -->
+  <section id="about"        class="anchor-section"><iframe src="tabs/about.html"        title="about"></iframe></section>
+  <section id="news"         class="anchor-section"><iframe src="tabs/news.html"         title="news"></iframe></section>
+  <section id="work"         class="anchor-section"><iframe src="tabs/work.html"         title="grants"></iframe></section>
+  <section id="project"      class="anchor-section"><iframe src="tabs/project.html"      title="projects"></iframe></section>
+  <section id="award"        class="anchor-section"><iframe src="tabs/award.html"        title="awards"></iframe></section>
+  <section id="service"      class="anchor-section"><iframe src="tabs/service.html"      title="service"></iframe></section>
+  <section id="teach"        class="anchor-section"><iframe src="tabs/teach.html"        title="teach"></iframe></section>
+  <section id="students"     class="anchor-section"><iframe src="tabs/students.html"     title="students"></iframe></section>
+  <section id="publications" class="anchor-section"><iframe src="tabs/publications.html" title="publications"></iframe></section>
+  <section id="contact"      class="anchor-section"><iframe src="tabs/contact.html"      title="contact"></iframe></section>
+
+  <footer>
+    <div>
+      <span class="prompt">$</span> lihui.db <span class="muted">·</span> last updated <span id="lastbuild">2026</span> <span class="muted">·</span> powered by vanilla JS
+    </div>
+  </footer>
+</main>
+
+<script src="assets/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>contact — lihui.db</title>
+  <link rel="stylesheet" href="../assets/style.css">
+  <style>
+    html, body { margin: 0; padding: 0; background: var(--bg); }
+    body { padding: 8px 0 64px; }
+  </style>
+</head>
+<body>
+<!-- Contact Tab (Style C) -->
+<div class="section-marker">
+  <span class="num">10</span> <span class="tag">##</span> contact
+</div>
+<h2 class="section-title">contact<span class="punct">.</span>info</h2>
+
+<dl class="contact-block">
+  <dt>email (primary)</dt>
+  <dd>
+    <a href="#" class="email" data-u="hli" data-d="xidian.edu.cn" title="click to compose">
+      hli<span class="at-sep"> [at] </span>xidian.edu.cn
+    </a>
+  </dd>
+  <dt>email (alt)</dt>
+  <dd>
+    <a href="#" class="email" data-u="herolee" data-d="pmail.ntu.edu.sg" title="click to compose">
+      herolee<span class="at-sep"> [at] </span>pmail.ntu.edu.sg
+    </a>
+  </dd>
+  <dt>office</dt>
+  <dd>School of Computer Science and Technology, Xidian University, Xi'an</dd>
+  <dt>postal</dt>
+  <dd>No.2 South Taibai Road, Xi'an, Shaanxi 710071, P.R. China</dd>
+  <dt>github</dt>
+  <dd><a href="https://github.com/lihuixidian" target="_blank" rel="noopener">github.com/lihuixidian</a></dd>
+  <dt>scholar</dt>
+  <dd>
+    <a href="https://scholar.google.com/citations?user=RHoDfoEAAAAJ" target="_blank" rel="noopener">Google Scholar</a>
+    <span class="text-mute">·</span>
+    <a href="https://dblp.org/pid/l/HuiLi5" target="_blank" rel="noopener">DBLP</a>
+  </dd>
+</dl>
+
+<script>
+// Email anti-crawler: emails are stored as data-u / data-d attributes
+// (parts split, no "@" or full address in the HTML). The click handler
+// assembles the mailto: link on demand.
+document.querySelectorAll('a.email').forEach(function (a) {
+  a.addEventListener('click', function (e) {
+    e.preventDefault();
+    var u = a.getAttribute('data-u');
+    var d = a.getAttribute('data-d');
+    if (u && d) window.location.href = 'mailto:' + u + '\u0040' + d;
+  });
+});
+</script>
+
+<script src="../assets/iframe-resize.js"></script>
+</body>
+</html>
